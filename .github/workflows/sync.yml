@@ -1,0 +1,68 @@
+name: Sync Loadly links
+
+on:
+  schedule:
+    - cron: '0 * * * *' # hourly
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check grouping rules
+        run: npm test
+
+      - name: Fetch apps from Loadly
+        env:
+          LOADLY_API_KEY: ${{ secrets.LOADLY_API_KEY }}
+        run: npm run sync
+
+      # Retried with a rebase: a run that starts while main has moved ahead
+      # would otherwise fail on push and skip the deploy.
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/apps.json
+          git diff --staged --quiet && echo "No change to commit" && exit 0
+          git commit -m "chore: sync Loadly links"
+          for attempt in 1 2 3; do
+            git push && exit 0
+            echo "Push failed (attempt $attempt) — rebasing on origin/main"
+            git pull --rebase origin main
+          done
+          echo "Could not push after 3 attempts" && exit 1
+
+      # Only the site is published. scripts/ holds no secrets, but there is no
+      # reason to serve the sync script, the workflow or package.json.
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          cp -r index.html assets data .nojekyll _site/
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

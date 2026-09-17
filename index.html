@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logique Loadly Terminal</title>
+<meta name="description" content="All Loadly distribution links in one place.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>📦</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <h1>Logique Loadly Terminal</h1>
+    <p class="sub">All app distribution links, synced from the Loadly API.</p>
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search name, version or bundle id…" autocomplete="off">
+      <div id="filters" class="filters" role="group" aria-label="Filter by platform"></div>
+      <button id="clear" class="clear" type="button" hidden>Clear filters</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <p id="status" class="status">Loading…</p>
+  <div id="list" class="groups"></div>
+</main>
+
+<footer class="wrap footer">
+  <span id="generated"></span>
+  <a href="https://loadly.io/doc/view/api" target="_blank" rel="noreferrer">Loadly API docs</a>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

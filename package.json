@@ -1,0 +1,10 @@
+{
+  "name": "loadly-terminal",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync": "node scripts/sync.mjs",
+    "serve": "python3 -m http.server 8080",
+    "test": "node --test \"scripts/**/*.test.mjs\""
+  }
+}

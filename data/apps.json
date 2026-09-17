@@ -1,0 +1,1134 @@
+{
+  "generatedAt": "2026-09-17T06:19:06.233Z",
+  "apps": [
+    {
+      "appKey": "cbfb03b9f6f6df89afd977a68ecce85b",
+      "buildKey": "48479d072147f2fd85780e2408ab2f51",
+      "name": "AF Inspect",
+      "icon": "https://loadly.io/image/view/app_icons/3fb93cdea96e753e98091709223b1201/120",
+      "platform": "Android",
+      "version": "1.2.0",
+      "buildVersion": "10",
+      "identifier": "com.logique.assistforward.repairhistory",
+      "fileSize": 63805921,
+      "shortcut": "af-inspect",
+      "installUrl": "https://loadly.io/af-inspect",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/a5a5026655fd01e2076602a4305642fcff98f92885e1b995932f80fad655a861",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-08-11 07:16:01",
+      "updated": "2026-08-11 07:16:01",
+      "builds": [
+        {
+          "buildKey": "48479d072147f2fd85780e2408ab2f51",
+          "version": "1.2.0",
+          "buildVersion": "10",
+          "fileSize": 63805921,
+          "created": "2026-08-11 07:16:01"
+        },
+        {
+          "buildKey": "d9632ed0b54b8733d7b9ce2a0ef6dec0",
+          "version": "1.0.0",
+          "buildVersion": "9",
+          "fileSize": 63806097,
+          "created": "2026-06-13 10:31:53"
+        },
+        {
+          "buildKey": "d7f8b33c6ecc25bcd952297a0e82f7c8",
+          "version": "1.0.0",
+          "buildVersion": "8",
+          "fileSize": 205822394,
+          "created": "2026-06-08 01:51:53"
+        },
+        {
+          "buildKey": "6c7c5d2288a6046737c875506e33cf6e",
+          "version": "1.0.0",
+          "buildVersion": "7",
+          "fileSize": 167877993,
+          "created": "2026-06-05 09:49:09"
+        },
+        {
+          "buildKey": "1f8ad257536b0b06db0916c1a2122c72",
+          "version": "1.0.0",
+          "buildVersion": "6",
+          "fileSize": 63812285,
+          "created": "2026-05-06 03:00:22"
+        },
+        {
+          "buildKey": "720fc1bae7ac1b048ed5676805a2736b",
+          "version": "1.0.0",
+          "buildVersion": "5",
+          "fileSize": 63812285,
+          "created": "2026-05-06 02:22:07"
+        },
+        {
+          "buildKey": "7c83c7b5791efb5b9e432bf926109714",
+          "version": "1.0.0",
+          "buildVersion": "4",
+          "fileSize": 63812281,
+          "created": "2026-05-05 15:02:12"
+        },
+        {
+          "buildKey": "e76a78a64fd82e728cd880b0f55b3169",
+          "version": "1.0.0",
+          "buildVersion": "3",
+          "fileSize": 63779357,
+          "created": "2026-05-04 13:18:44"
+        },
+        {
+          "buildKey": "de7a03c87b0eb294ede55d67e426350a",
+          "version": "1.0.0",
+          "buildVersion": "2",
+          "fileSize": 63291507,
+          "created": "2026-04-29 10:40:30"
+        },
+        {
+          "buildKey": "e2c29673cf61e162886cde17ebcb2f58",
+          "version": "1.0.0",
+          "buildVersion": "1",
+          "fileSize": 63290695,
+          "created": "2026-04-29 07:46:12"
+        }
+      ],
+      "groupKey": "com.logique.assistforward.repairhistory",
+      "groupLabel": "AF Inspect"
+    },
+    {
+      "appKey": "e4c33cd001ed46f50cbc01c467bde7e7",
+      "buildKey": "3b1329cc380124520be530526833585a",
+      "name": "Assist Forward",
+      "icon": "https://loadly.io/image/view/app_icons/be160ee711520c465b22d1a6d5067d26/120",
+      "platform": "Android",
+      "version": "1.0.7",
+      "buildVersion": "15",
+      "identifier": "id.logique.assistforward",
+      "fileSize": 39786642,
+      "shortcut": "apple-af",
+      "installUrl": "https://loadly.io/apple-af",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/ac2e2f9272768846c99eeb1db13f91d269967e4b9df853a43a32671d00cabbdf",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-07-14 04:40:19",
+      "updated": "2026-07-14 04:40:19",
+      "builds": [
+        {
+          "buildKey": "3b1329cc380124520be530526833585a",
+          "version": "1.0.7",
+          "buildVersion": "15",
+          "fileSize": 39786642,
+          "created": "2026-07-14 04:40:19"
+        },
+        {
+          "buildKey": "cc2d96b60000951ca1892931fde03b9d",
+          "version": "1.0.6",
+          "buildVersion": "14",
+          "fileSize": 39721106,
+          "created": "2026-05-08 02:59:44"
+        },
+        {
+          "buildKey": "154e0ee41d8dce4ffb1b735139d0a4e4",
+          "version": "1.0.7",
+          "buildVersion": "13",
+          "fileSize": 39721106,
+          "created": "2026-05-08 01:18:50"
+        },
+        {
+          "buildKey": "ba1e032a5352ff26589bce3d54123a5b",
+          "version": "1.0.7",
+          "buildVersion": "12",
+          "fileSize": 39721106,
+          "created": "2026-05-07 15:56:59"
+        },
+        {
+          "buildKey": "a18303f11862b70a0f754953c7c91913",
+          "version": "1.0.7",
+          "buildVersion": "11",
+          "fileSize": 39721106,
+          "created": "2026-05-06 06:02:11"
+        },
+        {
+          "buildKey": "2e43b399485252f9e6f46b2d3f4bb406",
+          "version": "1.0.6",
+          "buildVersion": "10",
+          "fileSize": 39589726,
+          "created": "2026-05-01 14:03:37"
+        },
+        {
+          "buildKey": "d6fdb88f615ded5c561fcd2868671d49",
+          "version": "1.0.5",
+          "buildVersion": "9",
+          "fileSize": 39589726,
+          "created": "2026-04-23 00:55:37"
+        },
+        {
+          "buildKey": "531a8adbf234402203006d923e47e6a2",
+          "version": "1.0.5",
+          "buildVersion": "8",
+          "fileSize": 39589726,
+          "created": "2026-04-22 14:39:36"
+        },
+        {
+          "buildKey": "080ba63b50c487063e1295f3a0e3a67a",
+          "version": "1.0.4",
+          "buildVersion": "7",
+          "fileSize": 38606950,
+          "created": "2026-04-17 08:54:46"
+        },
+        {
+          "buildKey": "0892c9598d338fd54f25940a5fca883a",
+          "version": "1.0.4",
+          "buildVersion": "6",
+          "fileSize": 38606934,
+          "created": "2026-04-13 08:15:32"
+        },
+        {
+          "buildKey": "1edfcf6008c8955a9aa5e62a9de8ab56",
+          "version": "1.0.4",
+          "buildVersion": "5",
+          "fileSize": 38606934,
+          "created": "2026-04-10 11:05:28"
+        },
+        {
+          "buildKey": "d6d11bf397b6e8e07f57e04b2214620b",
+          "version": "1.0.3",
+          "buildVersion": "3",
+          "fileSize": 38606934,
+          "created": "2026-04-07 10:53:05"
+        },
+        {
+          "buildKey": "b14b0bc9f17d478b66a1a17cc5c545a1",
+          "version": "1.0.1",
+          "buildVersion": "2",
+          "fileSize": 38606930,
+          "created": "2026-03-30 14:04:48"
+        },
+        {
+          "buildKey": "ab050db7539fa95163c6dedfdcab9a8c",
+          "version": "1.0.0",
+          "buildVersion": "1",
+          "fileSize": 38521175,
+          "created": "2026-03-27 03:20:15"
+        }
+      ],
+      "groupKey": "id.logique.assistforward",
+      "groupLabel": "Assist Forward"
+    },
+    {
+      "appKey": "74ac24fd90fa9b5b0053f95a8c4e8ad5",
+      "buildKey": "d99a3762ed1023ff1af68c170287b5fa",
+      "name": "Assist Forward [DEV]",
+      "icon": "https://loadly.io/image/view/app_icons/ffaa4bc75ed7ff933baec222f636ffae/120",
+      "platform": "Android",
+      "version": "1.0.7",
+      "buildVersion": "25",
+      "identifier": "id.logique.assistforward.dev",
+      "fileSize": 96046954,
+      "shortcut": "apple-af-dev",
+      "installUrl": "https://loadly.io/apple-af-dev",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/2c9339ddce9b9ccbd9d62ad303b93bc103fd00dbe4605a5b9b097b29343aaf7f",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-08-11 02:08:44",
+      "updated": "2026-08-11 02:08:44",
+      "builds": [
+        {
+          "buildKey": "d99a3762ed1023ff1af68c170287b5fa",
+          "version": "1.0.7",
+          "buildVersion": "25",
+          "fileSize": 96046954,
+          "created": "2026-08-11 02:08:44"
+        },
+        {
+          "buildKey": "f85942a95ba36a9cf70c80c99528d1bc",
+          "version": "1.0.7",
+          "buildVersion": "24",
+          "fileSize": 53334740,
+          "created": "2026-07-09 08:59:59"
+        },
+        {
+          "buildKey": "69ef33c4cbd1513e256ad3a4a8aa4359",
+          "version": "1.0.7",
+          "buildVersion": "23",
+          "fileSize": 53334740,
+          "created": "2026-07-09 03:25:05"
+        },
+        {
+          "buildKey": "4e3ee09c0784d2692a60a3d589b467a7",
+          "version": "1.0.6",
+          "buildVersion": "22",
+          "fileSize": 53334740,
+          "created": "2026-07-08 04:05:34"
+        },
+        {
+          "buildKey": "d3c472c964069cd7e109e31d0a24a969",
+          "version": "1.0.5",
+          "buildVersion": "21",
+          "fileSize": 132298025,
+          "created": "2026-07-01 03:34:48"
+        },
+        {
+          "buildKey": "153b1942b62f9b9e6ed54f0987000c0c",
+          "version": "1.0.5",
+          "buildVersion": "20",
+          "fileSize": 53334740,
+          "created": "2026-05-06 08:40:45"
+        },
+        {
+          "buildKey": "bbce70a74bf6dc56f736ff54cc0d0060",
+          "version": "1.0.5",
+          "buildVersion": "19",
+          "fileSize": 53203488,
+          "created": "2026-04-28 08:50:10"
+        },
+        {
+          "buildKey": "8c501bbf7836833c2516838af853c2af",
+          "version": "1.0.5",
+          "buildVersion": "18",
+          "fileSize": 53203488,
+          "created": "2026-04-27 08:07:34"
+        },
+        {
+          "buildKey": "5461b9619c7353a4896587fd520bab89",
+          "version": "1.0.5",
+          "buildVersion": "17",
+          "fileSize": 53072276,
+          "created": "2026-04-22 08:18:45"
+        },
+        {
+          "buildKey": "31bd51a3353a4349037257e98c4ab164",
+          "version": "1.0.4",
+          "buildVersion": "16",
+          "fileSize": 50429260,
+          "created": "2026-04-13 08:10:18"
+        },
+        {
+          "buildKey": "4614b7d7ceb99bea6724670748560a6c",
+          "version": "1.0.4",
+          "buildVersion": "15",
+          "fileSize": 50429264,
+          "created": "2026-04-10 10:51:48"
+        }
+      ],
+      "groupKey": "id.logique.assistforward",
+      "groupLabel": "Assist Forward"
+    },
+    {
+      "appKey": "7250bb8e8ce961782325894f4b700d10",
+      "buildKey": "cf69b36beeb479a75cbaa6fa4070822a",
+      "name": "Assist Forward [STG]",
+      "icon": "https://loadly.io/image/view/app_icons/46cdbd9b9d7e16399d1e8a333ef4f78f/120",
+      "platform": "Android",
+      "version": "1.0.5",
+      "buildVersion": "26",
+      "identifier": "id.logique.assistforward.stg",
+      "fileSize": 39721114,
+      "shortcut": "apple-af-stg",
+      "installUrl": "https://loadly.io/apple-af-stg",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/4c45bb878b5bb2cfe556a1f6c10e6b7f9adbd14945cfc610fe1abdbb4f77dc6d",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-05-06 01:28:59",
+      "updated": "2026-05-06 01:28:59",
+      "builds": [
+        {
+          "buildKey": "cf69b36beeb479a75cbaa6fa4070822a",
+          "version": "1.0.5",
+          "buildVersion": "26",
+          "fileSize": 39721114,
+          "created": "2026-05-06 01:28:59"
+        },
+        {
+          "buildKey": "fa526d5cd1cb21095c47fb867e57745e",
+          "version": "1.0.5",
+          "buildVersion": "25",
+          "fileSize": 39655646,
+          "created": "2026-05-05 03:26:32"
+        },
+        {
+          "buildKey": "c6b7d634bcb3b3420deb86d8f6cd9634",
+          "version": "1.0.5",
+          "buildVersion": "24",
+          "fileSize": 39655646,
+          "created": "2026-04-30 09:42:47"
+        },
+        {
+          "buildKey": "af33655279728836d3b312a61937f6a7",
+          "version": "1.0.5",
+          "buildVersion": "23",
+          "fileSize": 39655406,
+          "created": "2026-04-29 07:32:13"
+        },
+        {
+          "buildKey": "06ff334f8f352084f28c7d5680a053d7",
+          "version": "1.0.5",
+          "buildVersion": "22",
+          "fileSize": 39589870,
+          "created": "2026-04-28 03:18:20"
+        },
+        {
+          "buildKey": "15ca5ac03868218f2436a95d69707bcb",
+          "version": "1.0.5",
+          "buildVersion": "21",
+          "fileSize": 39589870,
+          "created": "2026-04-27 08:56:51"
+        },
+        {
+          "buildKey": "68d1ddda2d2396fc97194824a0253ca9",
+          "version": "1.0.5",
+          "buildVersion": "20",
+          "fileSize": 39589734,
+          "created": "2026-04-22 13:53:38"
+        },
+        {
+          "buildKey": "5b4ecfe75a5b3a362cef5bdbb63550ac",
+          "version": "1.0.4",
+          "buildVersion": "19",
+          "fileSize": 39524198,
+          "created": "2026-04-20 11:08:08"
+        },
+        {
+          "buildKey": "0768716c0c674d3d6559c49c2fbf420e",
+          "version": "1.0.4",
+          "buildVersion": "18",
+          "fileSize": 39524198,
+          "created": "2026-04-20 04:43:10"
+        },
+        {
+          "buildKey": "df8a74804bf8a0795ccf7c7b409dd955",
+          "version": "1.0.4",
+          "buildVersion": "17",
+          "fileSize": 39524178,
+          "created": "2026-04-16 03:36:08"
+        },
+        {
+          "buildKey": "0b254ffe3eeacc72d90af8d419ec87e5",
+          "version": "1.0.5",
+          "buildVersion": "16",
+          "fileSize": 38606962,
+          "created": "2026-04-15 07:46:49"
+        },
+        {
+          "buildKey": "ebe03eeea07ee09d0abe9332bbbf095e",
+          "version": "1.0.4",
+          "buildVersion": "15",
+          "fileSize": 38606946,
+          "created": "2026-04-14 02:29:24"
+        },
+        {
+          "buildKey": "786a264e876a2e6e45dbf676764cabc9",
+          "version": "1.0.4",
+          "buildVersion": "14",
+          "fileSize": 50429264,
+          "created": "2026-04-13 08:04:49"
+        },
+        {
+          "buildKey": "6706db83e8dfa21ae70dfb2f71c513eb",
+          "version": "1.0.4",
+          "buildVersion": "13",
+          "fileSize": 50429264,
+          "created": "2026-04-10 11:29:09"
+        }
+      ],
+      "groupKey": "id.logique.assistforward",
+      "groupLabel": "Assist Forward"
+    },
+    {
+      "appKey": "0481c62738f031504f971760c074f0ae",
+      "buildKey": "3be46521b71240535a1964b729618c1c",
+      "name": "[STG] Auction Express Inspection",
+      "icon": "https://loadly.io/image/view/app_icons/f07b3c92f788ba12209ea054dd18e04d/120",
+      "platform": "Android",
+      "version": "1.6.4",
+      "buildVersion": "2",
+      "identifier": "id.logique.auctionexpress.staging",
+      "fileSize": 19582497,
+      "shortcut": "ae-inspect-stg",
+      "installUrl": "https://loadly.io/ae-inspect-stg",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/e870793a70257ff2eac6582add683e904b36fd62ee5c075879b4b054d6746c6b",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-07-08 07:18:30",
+      "updated": "2026-07-08 07:18:30",
+      "builds": [
+        {
+          "buildKey": "3be46521b71240535a1964b729618c1c",
+          "version": "1.6.4",
+          "buildVersion": "2",
+          "fileSize": 19582497,
+          "created": "2026-07-08 07:18:30"
+        },
+        {
+          "buildKey": "d494947fc019344b45bc6a872b49c0c3",
+          "version": "1.6.4",
+          "buildVersion": "1",
+          "fileSize": 19582496,
+          "created": "2026-07-08 06:51:36"
+        }
+      ],
+      "groupKey": "id.logique.auctionexpress",
+      "groupLabel": "Auction Express Inspection"
+    },
+    {
+      "appKey": "6640fe4e1515b663b5491f9515369bc8",
+      "buildKey": "7a61ce4cc50a6e2698f734c155f2cd0f",
+      "name": "Bike Inspection System",
+      "icon": "https://loadly.io/image/view/app_icons/1c1546f5a034ad6a1ea7ea094aec0627/120",
+      "platform": "Android",
+      "version": "1.7.7-dev",
+      "buildVersion": "2",
+      "identifier": "com.upliftlab.bikeinspectionsystemdev",
+      "fileSize": 13260399,
+      "shortcut": "jba-bike-ins-dev",
+      "installUrl": "https://loadly.io/jba-bike-ins-dev",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/2490c4e7d6c4f854ef3b332a4d943c8ceccc6907254d8095308a86dabb48bb99",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-09-16 04:31:28",
+      "updated": "2026-09-16 04:31:28",
+      "builds": [
+        {
+          "buildKey": "7a61ce4cc50a6e2698f734c155f2cd0f",
+          "version": "1.7.7-dev",
+          "buildVersion": "2",
+          "fileSize": 13260399,
+          "created": "2026-09-16 04:31:28"
+        },
+        {
+          "buildKey": "96c86d6e1d1c439bf5603901c13e89f0",
+          "version": "1.7.4-dev",
+          "buildVersion": "1",
+          "fileSize": 13259979,
+          "created": "2026-09-14 06:34:30"
+        }
+      ],
+      "groupKey": "com.upliftlab.bikeinspectionsystem",
+      "groupLabel": "Bike Inspection System"
+    },
+    {
+      "appKey": "9d2d9959114546a61fafa49069644704",
+      "buildKey": "734d65d6a8cd0aeedcb936f4cdc87965",
+      "name": "Bike Inspection System",
+      "icon": "https://loadly.io/image/view/app_icons/573f3f0aaba4f8d44a9b87222b3e62f1/120",
+      "platform": "Android",
+      "version": "1.7.4-staging",
+      "buildVersion": "1",
+      "identifier": "com.upliftlab.bikeinspectionsystemstaging",
+      "fileSize": 13259486,
+      "shortcut": "jba-bike-ins-stg",
+      "installUrl": "https://loadly.io/jba-bike-ins-stg",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/6d9f486861d008f4073b958703d5293acb37b1afd4d837b95920ea0c18129a0d",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-09-14 06:38:22",
+      "updated": "2026-09-14 06:38:22",
+      "builds": [
+        {
+          "buildKey": "734d65d6a8cd0aeedcb936f4cdc87965",
+          "version": "1.7.4-staging",
+          "buildVersion": "1",
+          "fileSize": 13259486,
+          "created": "2026-09-14 06:38:22"
+        }
+      ],
+      "groupKey": "com.upliftlab.bikeinspectionsystem",
+      "groupLabel": "Bike Inspection System"
+    },
+    {
+      "appKey": "ff7e49222b961c66a31155109666ec5a",
+      "buildKey": "2a88c93c14f2a5bce0b1a5e6a48b3dbe",
+      "name": "Blue-T Demo",
+      "icon": "https://loadly.io/image/view/app_icons/ebcbfd94d35c101f6de92fc0ec9e9930/120",
+      "platform": "Android",
+      "version": "3.0.23",
+      "buildVersion": "4",
+      "identifier": "com.toyotatsusho.automotive.bluetdemo",
+      "fileSize": 89776529,
+      "shortcut": "blue-t-demo",
+      "installUrl": "https://loadly.io/blue-t-demo",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/b669b744b9be0c816d2d0bc6075696a575ee849b617b875c91fe0b3dde776f96",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-08-04 07:10:08",
+      "updated": "2026-08-04 07:10:08",
+      "builds": [
+        {
+          "buildKey": "2a88c93c14f2a5bce0b1a5e6a48b3dbe",
+          "version": "3.0.23",
+          "buildVersion": "4",
+          "fileSize": 89776529,
+          "created": "2026-08-04 07:10:08"
+        },
+        {
+          "buildKey": "0319f8cc2283aee4a67d37878e9cf18d",
+          "version": "3.0.23",
+          "buildVersion": "3",
+          "fileSize": 89776115,
+          "created": "2026-07-23 09:13:57"
+        },
+        {
+          "buildKey": "22bd1a8f5bd1abafec6ff1e20062f240",
+          "version": "3.0.23",
+          "buildVersion": "2",
+          "fileSize": 89229195,
+          "created": "2026-07-23 03:49:22"
+        },
+        {
+          "buildKey": "15fca9c566b9f45fede4fd00ba9dfc68",
+          "version": "3.0.23",
+          "buildVersion": "1",
+          "fileSize": 89217711,
+          "created": "2026-06-08 06:03:54"
+        }
+      ],
+      "groupKey": "com.toyotatsusho.automotive.bluet",
+      "groupLabel": "Blue-T Demo"
+    },
+    {
+      "appKey": "2688cabe99c1f93f7f5bd1e063be0a51",
+      "buildKey": "2939e4f05145af96e5ad4b3c89e6920c",
+      "name": "Blue-T Dev",
+      "icon": "https://loadly.io/image/view/app_icons/558cfde408569db5d82dfa7e4efc1b41/120",
+      "platform": "Android",
+      "version": "3.1.0",
+      "buildVersion": "4",
+      "identifier": "com.toyotatsusho.automotive.bluetsrilanka.dev",
+      "fileSize": 91505268,
+      "shortcut": "bluet-lk-dev",
+      "installUrl": "https://loadly.io/bluet-lk-dev",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/13820ceccbc2430d4309b5376c46408e95eebf0a2236158f2fbcf4b6b71a3987",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-08-05 02:17:32",
+      "updated": "2026-08-05 02:17:32",
+      "builds": [
+        {
+          "buildKey": "2939e4f05145af96e5ad4b3c89e6920c",
+          "version": "3.1.0",
+          "buildVersion": "4",
+          "fileSize": 91505268,
+          "created": "2026-08-05 02:17:32"
+        },
+        {
+          "buildKey": "56ba9ddc66c3a932db309c17f12e3845",
+          "version": "3.1.0",
+          "buildVersion": "3",
+          "fileSize": 91869758,
+          "created": "2026-07-28 01:50:43"
+        },
+        {
+          "buildKey": "974772a44c45aa9473ca461ecb16f4e6",
+          "version": "3.1.0",
+          "buildVersion": "2",
+          "fileSize": 90952654,
+          "created": "2026-07-27 02:30:18"
+        },
+        {
+          "buildKey": "2f45103f3c529fa28287d2f372165208",
+          "version": "3.0.23",
+          "buildVersion": "1",
+          "fileSize": 89229187,
+          "created": "2026-07-23 02:08:06"
+        }
+      ],
+      "groupKey": "com.toyotatsusho.automotive.bluetsrilanka",
+      "groupLabel": "Blue-T Dev"
+    },
+    {
+      "appKey": "2f82f85e3c6ac712a3c18e547b228a68",
+      "buildKey": "4b29276dc805a8cb058a662cd4e51178",
+      "name": "Guzzilla [DEV]",
+      "icon": "https://loadly.io/image/view/app_icons/46767d439e3015070ddbb30fa53bd91a/120",
+      "platform": "Android",
+      "version": "0.10.1",
+      "buildVersion": "1",
+      "identifier": "id.logique.guzilla.dev",
+      "fileSize": 23434171,
+      "shortcut": "guzilla-dev",
+      "installUrl": "https://loadly.io/guzilla-dev",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/285b830d8ea21ee986628ce27d961ada81035d99f5b8a3cef4608b00bcd4a071",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-08-04 08:44:23",
+      "updated": "2026-08-04 08:44:23",
+      "builds": [
+        {
+          "buildKey": "4b29276dc805a8cb058a662cd4e51178",
+          "version": "0.10.1",
+          "buildVersion": "1",
+          "fileSize": 23434171,
+          "created": "2026-08-04 08:44:23"
+        }
+      ],
+      "groupKey": "id.logique.guzilla",
+      "groupLabel": "Guzzilla"
+    },
+    {
+      "appKey": "57f407e8ec65216a145586d7edccffef",
+      "buildKey": "0a419922a73a92071798253d2dd41844",
+      "name": "Guzzilla [STG]",
+      "icon": "https://loadly.io/image/view/app_icons/ed2b5756d356e55f723541147b2a9fd3/120",
+      "platform": "Android",
+      "version": "0.11.0",
+      "buildVersion": "1",
+      "identifier": "id.logique.guzilla.stg",
+      "fileSize": 23691649,
+      "shortcut": "guzilla-stg",
+      "installUrl": "https://loadly.io/guzilla-stg",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/76a5fff17bd4941e02aadacdd4ba9c6b0bdd0e45100bf29b3802cff3cb7ce969",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-08-18 05:36:38",
+      "updated": "2026-08-18 05:36:38",
+      "builds": [
+        {
+          "buildKey": "0a419922a73a92071798253d2dd41844",
+          "version": "0.11.0",
+          "buildVersion": "1",
+          "fileSize": 23691649,
+          "created": "2026-08-18 05:36:38"
+        }
+      ],
+      "groupKey": "id.logique.guzilla",
+      "groupLabel": "Guzzilla"
+    },
+    {
+      "appKey": "32b59ed603aa83cd518efbea37b49772",
+      "buildKey": "c6becfc1b71e1f31c09b1045f7f1b713",
+      "name": "HINO-CONNECT",
+      "icon": "https://loadly.io/image/view/app_icons/f3386c6b8ad261ab0cec059de78f14a2/120",
+      "platform": "Android",
+      "version": "1.8",
+      "buildVersion": "1",
+      "identifier": "id.hino.connect",
+      "fileSize": 23783548,
+      "shortcut": "OywxN4aa",
+      "installUrl": "https://loadly.io/OywxN4aa",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/b51ffba901237d146f258540c786b74ba88531abe24e17f5aa724b917f60d192",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-07-27 03:41:24",
+      "updated": "2026-07-27 03:41:24",
+      "builds": [
+        {
+          "buildKey": "c6becfc1b71e1f31c09b1045f7f1b713",
+          "version": "1.8",
+          "buildVersion": "1",
+          "fileSize": 23783548,
+          "created": "2026-07-27 03:41:24"
+        }
+      ],
+      "groupKey": "id.hino.connect",
+      "groupLabel": "HINO-CONNECT"
+    },
+    {
+      "appKey": "188f83e6c03b621fec99a346924fd4e7",
+      "buildKey": "67c9dcae156b6a9d9b9e6501e5ee2fb1",
+      "name": "Inspire",
+      "icon": "https://loadly.io/image/view/app_icons/e2fa894372cdadacd14ffcddf4192511/120",
+      "platform": "Android",
+      "version": "1.1.0",
+      "buildVersion": "4",
+      "identifier": "id.co.jba.inspire",
+      "fileSize": 37292797,
+      "shortcut": "inspection_",
+      "installUrl": "https://loadly.io/inspection_",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/ed3ea8da349eb1ac5e1b5baa97786326479cd2c8fa1b35d2d2ea60246c0ee227",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-05-15 10:55:55",
+      "updated": "2026-05-15 10:55:55",
+      "builds": [
+        {
+          "buildKey": "67c9dcae156b6a9d9b9e6501e5ee2fb1",
+          "version": "1.1.0",
+          "buildVersion": "4",
+          "fileSize": 37292797,
+          "created": "2026-05-15 10:55:55"
+        },
+        {
+          "buildKey": "c8390eb616b22c176705bb5e3cd986e4",
+          "version": "1.0.1",
+          "buildVersion": "3",
+          "fileSize": 37162817,
+          "created": "2026-05-06 08:05:18"
+        },
+        {
+          "buildKey": "58039b38d43afdaf7eeb2fee188d0977",
+          "version": "1.0.0",
+          "buildVersion": "1",
+          "fileSize": 37162813,
+          "created": "2026-05-06 02:16:19"
+        }
+      ],
+      "groupKey": "id.co.jba.inspire",
+      "groupLabel": "Inspire"
+    },
+    {
+      "appKey": "4a25967e17579d572f1482aad8d1faa1",
+      "buildKey": "fb5ed368fe90bcce30150806b86b95f6",
+      "name": "Inspire [DEV]",
+      "icon": "https://loadly.io/image/view/app_icons/30510aa010c58f8a0f7f917ac01bbbcf/120",
+      "platform": "Android",
+      "version": "1.0.1-10",
+      "buildVersion": "37",
+      "identifier": "id.co.jba.inspire.dev",
+      "fileSize": 50487506,
+      "shortcut": "inspection-dev_",
+      "installUrl": "https://loadly.io/inspection-dev_",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/9e9a2e4c46ff4ed3122b4a447a9215bd07a1dcd35d07a84814c443f28a7c2e5c",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-05-15 07:44:50",
+      "updated": "2026-05-15 07:44:50",
+      "builds": [
+        {
+          "buildKey": "fb5ed368fe90bcce30150806b86b95f6",
+          "version": "1.0.1-10",
+          "buildVersion": "37",
+          "fileSize": 50487506,
+          "created": "2026-05-15 07:44:50"
+        },
+        {
+          "buildKey": "46f9832b007f27f16c292ec37e7df9a8",
+          "version": "1.0.1-9",
+          "buildVersion": "36",
+          "fileSize": 50356430,
+          "created": "2026-05-15 03:25:38"
+        },
+        {
+          "buildKey": "e2187a3ed22b75deef2c88a199aa1881",
+          "version": "1.0.1-8",
+          "buildVersion": "35",
+          "fileSize": 50356430,
+          "created": "2026-05-13 11:11:16"
+        },
+        {
+          "buildKey": "ca876b09e9b4b651f555303e02f1dcc1",
+          "version": "1.0.1-7",
+          "buildVersion": "34",
+          "fileSize": 50356430,
+          "created": "2026-05-13 04:52:24"
+        }
+      ],
+      "groupKey": "id.co.jba.inspire",
+      "groupLabel": "Inspire"
+    },
+    {
+      "appKey": "0169917bdc53bd749acdbcdc0deb9d25",
+      "buildKey": "46f087cfb77b04c8232d0116bb1ad1e7",
+      "name": "JBA Indonesia",
+      "icon": "https://loadly.io/image/view/app_icons/94680ee668b74c6ae5a47483e7e3aa73/120",
+      "platform": "Android",
+      "version": "2.27.0",
+      "buildVersion": "3",
+      "identifier": "id.logique.jbabiddingrevamp",
+      "fileSize": 168742752,
+      "shortcut": "jba-bidding",
+      "installUrl": "https://loadly.io/jba-bidding",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/6f00380f81c7226ee8abf53aeeed5713c3d8cf66a0fbf828d58fe2735b4560dc",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-08-18 03:12:45",
+      "updated": "2026-08-18 03:12:45",
+      "builds": [
+        {
+          "buildKey": "46f087cfb77b04c8232d0116bb1ad1e7",
+          "version": "2.27.0",
+          "buildVersion": "3",
+          "fileSize": 168742752,
+          "created": "2026-08-18 03:12:45"
+        },
+        {
+          "buildKey": "009042f786ab6ffa98ff48d74cf0b64c",
+          "version": "2.26.0",
+          "buildVersion": "2",
+          "fileSize": 168736729,
+          "created": "2026-08-13 03:59:00"
+        }
+      ],
+      "groupKey": "id.logique.jbabiddingrevamp",
+      "groupLabel": "JBA Bidding Revamp"
+    },
+    {
+      "appKey": "168f71265ff50e97ae9ed249293ceb1f",
+      "buildKey": "de0dd58bd22f0ea2ce7828cf7a037cd4",
+      "name": "[DEV] JBA Indonesia",
+      "icon": "https://loadly.io/image/view/app_icons/63709f5a78d44181e9cbd5c18ae204eb/120",
+      "platform": "Android",
+      "version": "2.26.0-dev-",
+      "buildVersion": "2",
+      "identifier": "id.logique.jbabiddingrevamp.dev",
+      "fileSize": 113461129,
+      "shortcut": "jba-bidding-dev",
+      "installUrl": "https://loadly.io/jba-bidding-dev",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/b74c6c9e1f2097fcdd6427d0a455fb21e311b5a38ba4ee2d6e6d57ab453bbc4e",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-08-05 06:13:13",
+      "updated": "2026-08-05 06:13:13",
+      "builds": [
+        {
+          "buildKey": "de0dd58bd22f0ea2ce7828cf7a037cd4",
+          "version": "2.26.0-dev-",
+          "buildVersion": "2",
+          "fileSize": 113461129,
+          "created": "2026-08-05 06:13:13"
+        }
+      ],
+      "groupKey": "id.logique.jbabiddingrevamp",
+      "groupLabel": "JBA Bidding Revamp"
+    },
+    {
+      "appKey": "5f71dd6619459536d72333344ab8a3a6",
+      "buildKey": "06d079871f9117808879cc29c55f0d59",
+      "name": "[STG] JBA Indonesia",
+      "icon": "https://loadly.io/image/view/app_icons/448d03f43a716f3dc94d6c34e4b8d550/120",
+      "platform": "Android",
+      "version": "2.26.0",
+      "buildVersion": "3",
+      "identifier": "id.logique.jbabiddingrevamp.staging",
+      "fileSize": 100964369,
+      "shortcut": "jba-bidding-stg",
+      "installUrl": "https://loadly.io/jba-bidding-stg",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/c92123f43feba99ac81e41db807c35bb66de8295bbcffee1aaa1700852d8caeb",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-08-12 10:35:18",
+      "updated": "2026-08-12 10:35:18",
+      "builds": [
+        {
+          "buildKey": "06d079871f9117808879cc29c55f0d59",
+          "version": "2.26.0",
+          "buildVersion": "3",
+          "fileSize": 100964369,
+          "created": "2026-08-12 10:35:18"
+        },
+        {
+          "buildKey": "0be3c93344595976e1c8fc5f80b37192",
+          "version": "2.26.0",
+          "buildVersion": "2",
+          "fileSize": 56685866,
+          "created": "2026-08-10 04:14:08"
+        },
+        {
+          "buildKey": "c75215388579131ff19685351240a922",
+          "version": "2.25.0",
+          "buildVersion": "1",
+          "fileSize": 99476128,
+          "created": "2026-07-28 07:26:39"
+        }
+      ],
+      "groupKey": "id.logique.jbabiddingrevamp",
+      "groupLabel": "JBA Bidding Revamp"
+    },
+    {
+      "appKey": "dda863a3e3912468f552b34646d21049",
+      "buildKey": "fc713215246c1542f4ef1787c24d9dee",
+      "name": "[DEV] JBA Inventory Flow Control",
+      "icon": "https://loadly.io/image/view/app_icons/d9e094b5775b69332ead70f832ca9d19/120",
+      "platform": "Android",
+      "version": "1.6.1-dev",
+      "buildVersion": "4",
+      "identifier": "id.logique.dev",
+      "fileSize": 17161222,
+      "shortcut": "jba-inv-dev",
+      "installUrl": "https://loadly.io/jba-inv-dev",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/5e5f6f65eaa97d8dd763ed89ee78237e3c94c12d7b7d0b43d7c1f05bace27516",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-05-20 07:12:05",
+      "updated": "2026-05-20 07:12:05",
+      "builds": [
+        {
+          "buildKey": "fc713215246c1542f4ef1787c24d9dee",
+          "version": "1.6.1-dev",
+          "buildVersion": "4",
+          "fileSize": 17161222,
+          "created": "2026-05-20 07:12:05"
+        },
+        {
+          "buildKey": "62959fccde97d41be25fcdb3e862fd5c",
+          "version": "1.6.1-dev",
+          "buildVersion": "3",
+          "fileSize": 17160840,
+          "created": "2026-05-19 08:01:12"
+        },
+        {
+          "buildKey": "6540e87037077ac8b7d4546f1112182a",
+          "version": "1.6.1-dev",
+          "buildVersion": "2",
+          "fileSize": 16722904,
+          "created": "2026-05-19 04:35:22"
+        },
+        {
+          "buildKey": "19d0ea6d920e6fd4d7e2643f7246045b",
+          "version": "1.6.1-dev",
+          "buildVersion": "1",
+          "fileSize": 16722373,
+          "created": "2026-05-18 07:44:03"
+        }
+      ],
+      "groupKey": "name:JBA Inventory Flow Control",
+      "groupLabel": "JBA Inventory Flow Control"
+    },
+    {
+      "appKey": "560d4d27e05799145b498d6e85d33db6",
+      "buildKey": "d0b24abaf65aad84a43469181c8ae20b",
+      "name": "JBA Inventory Flow Control",
+      "icon": "https://loadly.io/image/view/app_icons/1caafa25bb5fa373a6e971d35b48c521/120",
+      "platform": "Android",
+      "version": "1.6.1-live",
+      "buildVersion": "2",
+      "identifier": "id.logique.live",
+      "fileSize": 17161086,
+      "shortcut": "jba-inv-live",
+      "installUrl": "https://loadly.io/jba-inv-live",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/bc56cbfcd3387c49b9504e2f4c09bea67bc676c968a344726b54ffccd51d2a1f",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-07-15 06:54:05",
+      "updated": "2026-07-15 06:54:05",
+      "builds": [
+        {
+          "buildKey": "d0b24abaf65aad84a43469181c8ae20b",
+          "version": "1.6.1-live",
+          "buildVersion": "2",
+          "fileSize": 17161086,
+          "created": "2026-07-15 06:54:05"
+        },
+        {
+          "buildKey": "b6a28e7c363dab7d1cbb213a99569d26",
+          "version": "1.6.1-live",
+          "buildVersion": "0",
+          "fileSize": 17161086,
+          "created": "2026-07-15 06:50:33"
+        },
+        {
+          "buildKey": "4c35fb402844306c3aad1364c6a3195b",
+          "version": "1.6.1-live",
+          "buildVersion": "1",
+          "fileSize": 17161348,
+          "created": "2026-05-26 02:35:46"
+        }
+      ],
+      "groupKey": "name:JBA Inventory Flow Control",
+      "groupLabel": "JBA Inventory Flow Control"
+    },
+    {
+      "appKey": "6696801feede4a84918e2b3488fc231b",
+      "buildKey": "c1ae61a7a45b772a09d1b9af4a1c8d41",
+      "name": "[STG] JBA Inventory Flow Control",
+      "icon": "https://loadly.io/image/view/app_icons/e516ed8a7aeea2799927f056b85a0b7f/120",
+      "platform": "Android",
+      "version": "1.6.1-staging",
+      "buildVersion": "2",
+      "identifier": "id.logique.staging",
+      "fileSize": 17161416,
+      "shortcut": "jba-inv-stg",
+      "installUrl": "https://loadly.io/jba-inv-stg",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/8e114cab68da0d18ddab84fefdf71456b33c93d7f15b522ab026461038087381",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-05-20 07:55:37",
+      "updated": "2026-05-20 07:55:37",
+      "builds": [
+        {
+          "buildKey": "c1ae61a7a45b772a09d1b9af4a1c8d41",
+          "version": "1.6.1-staging",
+          "buildVersion": "2",
+          "fileSize": 17161416,
+          "created": "2026-05-20 07:55:37"
+        },
+        {
+          "buildKey": "36e1d2de91c0737a3407d7ed14a6b57b",
+          "version": "1.6.1-staging",
+          "buildVersion": "1",
+          "fileSize": 17160984,
+          "created": "2026-05-20 03:56:38"
+        }
+      ],
+      "groupKey": "name:JBA Inventory Flow Control",
+      "groupLabel": "JBA Inventory Flow Control"
+    },
+    {
+      "appKey": "f731d04a9fb620bf66d87a3560311131",
+      "buildKey": "76f131f763b9e706c3202759c4c4af3a",
+      "name": "Opportunity Management",
+      "icon": "https://loadly.io/image/view/app_icons/2096868f53e3c7bce7faf32b27a6b081/120",
+      "platform": "Android",
+      "version": "1.0.0",
+      "buildVersion": "1",
+      "identifier": "com.bluet.opportunitymanagement",
+      "fileSize": 80768650,
+      "shortcut": "opp-mgmt-kh",
+      "installUrl": "https://loadly.io/opp-mgmt-kh",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/a0dac233e633a4627bd139524ae2255a2e3b7934df673bcf1382944d6da124d4",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-08-11 08:39:08",
+      "updated": "2026-08-11 08:39:08",
+      "builds": [
+        {
+          "buildKey": "76f131f763b9e706c3202759c4c4af3a",
+          "version": "1.0.0",
+          "buildVersion": "1",
+          "fileSize": 80768650,
+          "created": "2026-08-11 08:39:08"
+        }
+      ],
+      "groupKey": "com.bluet.opportunitymanagement",
+      "groupLabel": "Opportunity Management"
+    },
+    {
+      "appKey": "a3afe603e138ecead2c8c7cc79baf11c",
+      "buildKey": "537b7db155474b95066e49e328155d66",
+      "name": "Posting Tool",
+      "icon": "https://loadly.io/image/view/app_icons/3aadaf816132ef8a370135b6b1acc210/120",
+      "platform": "Android",
+      "version": "1.0.0",
+      "buildVersion": "1",
+      "identifier": "com.bluet.postingtool",
+      "fileSize": 87249392,
+      "shortcut": "posting-tool-kh",
+      "installUrl": "https://loadly.io/posting-tool-kh",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/ec0d33c62975890a47bed0c42972138e047c5803332df32d9b51cc900541ba09",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-08-11 09:25:09",
+      "updated": "2026-08-11 09:25:09",
+      "builds": [
+        {
+          "buildKey": "537b7db155474b95066e49e328155d66",
+          "version": "1.0.0",
+          "buildVersion": "1",
+          "fileSize": 87249392,
+          "created": "2026-08-11 09:25:09"
+        }
+      ],
+      "groupKey": "com.bluet.postingtool",
+      "groupLabel": "Posting Tool"
+    }
+  ]
+}
