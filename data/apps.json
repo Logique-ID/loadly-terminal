@@ -1,6 +1,73 @@
 {
-  "generatedAt": "2026-09-23T05:47:31.032Z",
+  "generatedAt": "2026-09-23T11:20:31.503Z",
   "apps": [
+    {
+      "appKey": "71018f5dcebacd17442bbf8598adf170",
+      "buildKey": "2d07a2eeb66cb34c45cde3c2820cfaa5",
+      "name": "[DEV] JBA Inventory Flow Control",
+      "icon": "https://loadly.io/image/view/app_icons/005783d0573ba6846f68e82a2b2e43c1/120",
+      "platform": "Android",
+      "version": "1.6.2-dev",
+      "buildVersion": "2",
+      "identifier": "id.jba.inventory.flow.dev",
+      "fileSize": 17172632,
+      "shortcut": "jba-inv-dev",
+      "installUrl": "https://loadly.io/jba-inv-dev",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/008ca1d2be432da9fcb54ccb8193002c1b6a3fd2dd4c2f378898f3a67bb253d4",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-09-23 07:03:05",
+      "updated": "2026-09-23 07:03:05",
+      "builds": [
+        {
+          "buildKey": "2d07a2eeb66cb34c45cde3c2820cfaa5",
+          "version": "1.6.2-dev",
+          "buildVersion": "2",
+          "fileSize": 17172632,
+          "created": "2026-09-23 07:03:05"
+        },
+        {
+          "buildKey": "d09d48ca07cc72c555becf3ecfcdfa14",
+          "version": "1.6.1-dev",
+          "buildVersion": "1",
+          "fileSize": 17172990,
+          "created": "2026-09-23 06:17:20"
+        }
+      ],
+      "groupKey": "id.jba.inventory.flow",
+      "groupLabel": "[DEV] JBA Inventory Flow Control"
+    },
+    {
+      "appKey": "628e1a6afa687425d18ee2fd6a91adce",
+      "buildKey": "93be5e684cb889c01f99825843436c51",
+      "name": "[STG] JBA Inventory Flow Control",
+      "icon": "https://loadly.io/image/view/app_icons/e17cc4890fc70311def7100ecfc6fb7c/120",
+      "platform": "Android",
+      "version": "1.6.1-staging",
+      "buildVersion": "1",
+      "identifier": "id.jba.inventory.flow.staging",
+      "fileSize": 17172705,
+      "shortcut": "jba-inv-stg",
+      "installUrl": "https://loadly.io/jba-inv-stg",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/e46cd7539f63d2cd6dc5227b052ac6d83b7ee889ee89ab0b22c9c5a1af0aef17",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-09-23 06:25:07",
+      "updated": "2026-09-23 06:25:07",
+      "builds": [
+        {
+          "buildKey": "93be5e684cb889c01f99825843436c51",
+          "version": "1.6.1-staging",
+          "buildVersion": "1",
+          "fileSize": 17172705,
+          "created": "2026-09-23 06:25:07"
+        }
+      ],
+      "groupKey": "id.jba.inventory.flow",
+      "groupLabel": "[DEV] JBA Inventory Flow Control"
+    },
     {
       "appKey": "cbfb03b9f6f6df89afd977a68ecce85b",
       "buildKey": "48479d072147f2fd85780e2408ab2f51",
@@ -866,23 +933,30 @@
     },
     {
       "appKey": "168f71265ff50e97ae9ed249293ceb1f",
-      "buildKey": "1247da6f500daf8040fe009f20a70162",
+      "buildKey": "c3645dc0f0f51779820bc82585addd23",
       "name": "[DEV] JBA Indonesia",
-      "icon": "https://loadly.io/image/view/app_icons/2bf6dacb7375e90a26246a171d9bdc6c/120",
+      "icon": "https://loadly.io/image/view/app_icons/6e73a833e4ff874789fc232b37a88ba0/120",
       "platform": "Android",
-      "version": "2.31.0-dev-",
-      "buildVersion": "3",
+      "version": "2.32.0-dev-",
+      "buildVersion": "4",
       "identifier": "id.logique.jbabiddingrevamp.dev",
-      "fileSize": 117525183,
+      "fileSize": 117527217,
       "shortcut": "jba-bidding-dev",
       "installUrl": "https://loadly.io/jba-bidding-dev",
       "channels": [],
-      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/8150c865f0c06ca70656feb6e7d492cb6324c38d4154b9639c1a17621298b537",
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/a7332177cffee8cbfc0e465d40e41dc2fd8090f4e60db0b9be4e3c8f52d62063",
       "protection": "Public",
       "isProtected": false,
-      "created": "2026-09-23 03:05:08",
-      "updated": "2026-09-23 03:05:08",
+      "created": "2026-09-23 09:25:57",
+      "updated": "2026-09-23 09:25:57",
       "builds": [
+        {
+          "buildKey": "c3645dc0f0f51779820bc82585addd23",
+          "version": "2.32.0-dev-",
+          "buildVersion": "4",
+          "fileSize": 117527217,
+          "created": "2026-09-23 09:25:57"
+        },
         {
           "buildKey": "1247da6f500daf8040fe009f20a70162",
           "version": "2.31.0-dev-",
@@ -953,57 +1027,6 @@
       "groupLabel": "JBA Bidding Revamp"
     },
     {
-      "appKey": "dda863a3e3912468f552b34646d21049",
-      "buildKey": "fc713215246c1542f4ef1787c24d9dee",
-      "name": "[DEV] JBA Inventory Flow Control",
-      "icon": "https://loadly.io/image/view/app_icons/d9e094b5775b69332ead70f832ca9d19/120",
-      "platform": "Android",
-      "version": "1.6.1-dev",
-      "buildVersion": "4",
-      "identifier": "id.logique.dev",
-      "fileSize": 17161222,
-      "shortcut": "jba-inv-dev",
-      "installUrl": "https://loadly.io/jba-inv-dev",
-      "channels": [],
-      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/5e5f6f65eaa97d8dd763ed89ee78237e3c94c12d7b7d0b43d7c1f05bace27516",
-      "protection": "Public",
-      "isProtected": false,
-      "created": "2026-05-20 07:12:05",
-      "updated": "2026-05-20 07:12:05",
-      "builds": [
-        {
-          "buildKey": "fc713215246c1542f4ef1787c24d9dee",
-          "version": "1.6.1-dev",
-          "buildVersion": "4",
-          "fileSize": 17161222,
-          "created": "2026-05-20 07:12:05"
-        },
-        {
-          "buildKey": "62959fccde97d41be25fcdb3e862fd5c",
-          "version": "1.6.1-dev",
-          "buildVersion": "3",
-          "fileSize": 17160840,
-          "created": "2026-05-19 08:01:12"
-        },
-        {
-          "buildKey": "6540e87037077ac8b7d4546f1112182a",
-          "version": "1.6.1-dev",
-          "buildVersion": "2",
-          "fileSize": 16722904,
-          "created": "2026-05-19 04:35:22"
-        },
-        {
-          "buildKey": "19d0ea6d920e6fd4d7e2643f7246045b",
-          "version": "1.6.1-dev",
-          "buildVersion": "1",
-          "fileSize": 16722373,
-          "created": "2026-05-18 07:44:03"
-        }
-      ],
-      "groupKey": "name:JBA Inventory Flow Control",
-      "groupLabel": "JBA Inventory Flow Control"
-    },
-    {
       "appKey": "560d4d27e05799145b498d6e85d33db6",
       "buildKey": "d0b24abaf65aad84a43469181c8ae20b",
       "name": "JBA Inventory Flow Control",
@@ -1042,43 +1065,6 @@
           "buildVersion": "1",
           "fileSize": 17161348,
           "created": "2026-05-26 02:35:46"
-        }
-      ],
-      "groupKey": "name:JBA Inventory Flow Control",
-      "groupLabel": "JBA Inventory Flow Control"
-    },
-    {
-      "appKey": "6696801feede4a84918e2b3488fc231b",
-      "buildKey": "c1ae61a7a45b772a09d1b9af4a1c8d41",
-      "name": "[STG] JBA Inventory Flow Control",
-      "icon": "https://loadly.io/image/view/app_icons/e516ed8a7aeea2799927f056b85a0b7f/120",
-      "platform": "Android",
-      "version": "1.6.1-staging",
-      "buildVersion": "2",
-      "identifier": "id.logique.staging",
-      "fileSize": 17161416,
-      "shortcut": "jba-inv-stg",
-      "installUrl": "https://loadly.io/jba-inv-stg",
-      "channels": [],
-      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/8e114cab68da0d18ddab84fefdf71456b33c93d7f15b522ab026461038087381",
-      "protection": "Public",
-      "isProtected": false,
-      "created": "2026-05-20 07:55:37",
-      "updated": "2026-05-20 07:55:37",
-      "builds": [
-        {
-          "buildKey": "c1ae61a7a45b772a09d1b9af4a1c8d41",
-          "version": "1.6.1-staging",
-          "buildVersion": "2",
-          "fileSize": 17161416,
-          "created": "2026-05-20 07:55:37"
-        },
-        {
-          "buildKey": "36e1d2de91c0737a3407d7ed14a6b57b",
-          "version": "1.6.1-staging",
-          "buildVersion": "1",
-          "fileSize": 17160984,
-          "created": "2026-05-20 03:56:38"
         }
       ],
       "groupKey": "name:JBA Inventory Flow Control",
