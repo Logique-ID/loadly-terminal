@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-23T23:34:23.190Z",
+  "generatedAt": "2026-09-24T04:27:18.099Z",
   "apps": [
     {
       "appKey": "71018f5dcebacd17442bbf8598adf170",
@@ -708,6 +708,36 @@
       ],
       "groupKey": "com.toyotatsusho.automotive.bluetsrilanka",
       "groupLabel": "Blue-T Dev"
+    },
+    {
+      "appKey": "37fddc532a4f532c82e85106b9f8f9cc",
+      "buildKey": "f7eb1a05f90f73613e107a1825a26b47",
+      "name": "Guzzilla",
+      "icon": "https://loadly.io/image/view/app_icons/220ab170066aa01355c3260c1526bd18/120",
+      "platform": "Android",
+      "version": "0.11.1",
+      "buildVersion": "1",
+      "identifier": "id.logique.guzilla",
+      "fileSize": 15364513,
+      "shortcut": "guzilla-prd",
+      "installUrl": "https://loadly.io/guzilla-prd",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/3d1d08cf26d4bc535582e1280292c8892c7bc0e393181ebf24d8b792f8bcf375",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-09-24 03:58:35",
+      "updated": "2026-09-24 03:58:35",
+      "builds": [
+        {
+          "buildKey": "f7eb1a05f90f73613e107a1825a26b47",
+          "version": "0.11.1",
+          "buildVersion": "1",
+          "fileSize": 15364513,
+          "created": "2026-09-24 03:58:35"
+        }
+      ],
+      "groupKey": "id.logique.guzilla",
+      "groupLabel": "Guzzilla"
     },
     {
       "appKey": "2f82f85e3c6ac712a3c18e547b228a68",
