@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T05:16:50.486Z",
+  "generatedAt": "2026-09-30T12:23:03.494Z",
   "apps": [
     {
       "appKey": "71018f5dcebacd17442bbf8598adf170",
@@ -963,23 +963,30 @@
     },
     {
       "appKey": "168f71265ff50e97ae9ed249293ceb1f",
-      "buildKey": "bc8ac430c59f9ac8c5bebe06c31d9930",
+      "buildKey": "6119d6923b380524bd8d5573f8d8978b",
       "name": "[DEV] JBA Indonesia",
-      "icon": "https://loadly.io/image/view/app_icons/80aeeb50d83d3d2eb70eaa17582ea2d1/120",
+      "icon": "https://loadly.io/image/view/app_icons/ae3680f468ff33c6582360f7f991e53c/120",
       "platform": "Android",
       "version": "2.33.0-dev-",
-      "buildVersion": "6",
+      "buildVersion": "7",
       "identifier": "id.logique.jbabiddingrevamp.dev",
-      "fileSize": 117546100,
+      "fileSize": 118825098,
       "shortcut": "jba-bidding-dev",
       "installUrl": "https://loadly.io/jba-bidding-dev",
       "channels": [],
-      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/05b5d71cf84e7258434d75b8663a238eeca5e618874076babc9e89c72ccfca26",
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/c1ae51762969c11fa1d9e6ea2ad0c0146d1f1b0275a9e823b7f75fa91fffb9e7",
       "protection": "Public",
       "isProtected": false,
-      "created": "2026-09-29 10:34:28",
-      "updated": "2026-09-29 10:34:28",
+      "created": "2026-09-30 08:44:44",
+      "updated": "2026-09-30 08:44:44",
       "builds": [
+        {
+          "buildKey": "6119d6923b380524bd8d5573f8d8978b",
+          "version": "2.33.0-dev-",
+          "buildVersion": "7",
+          "fileSize": 118825098,
+          "created": "2026-09-30 08:44:44"
+        },
         {
           "buildKey": "bc8ac430c59f9ac8c5bebe06c31d9930",
           "version": "2.33.0-dev-",
