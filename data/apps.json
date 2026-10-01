@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-01T01:58:26.629Z",
+  "generatedAt": "2026-10-01T08:45:51.926Z",
   "apps": [
     {
       "appKey": "71018f5dcebacd17442bbf8598adf170",
@@ -40,23 +40,30 @@
     },
     {
       "appKey": "628e1a6afa687425d18ee2fd6a91adce",
-      "buildKey": "93be5e684cb889c01f99825843436c51",
+      "buildKey": "b3c29afbc817b68ddfd623076493caae",
       "name": "[STG] JBA Inventory Flow Control",
-      "icon": "https://loadly.io/image/view/app_icons/e17cc4890fc70311def7100ecfc6fb7c/120",
+      "icon": "https://loadly.io/image/view/app_icons/03400f56036945a3cf8829043a1b6e08/120",
       "platform": "Android",
-      "version": "1.6.1-staging",
-      "buildVersion": "1",
+      "version": "1.6.2-staging",
+      "buildVersion": "2",
       "identifier": "id.jba.inventory.flow.staging",
-      "fileSize": 17172705,
+      "fileSize": 17172709,
       "shortcut": "jba-inv-stg",
       "installUrl": "https://loadly.io/jba-inv-stg",
       "channels": [],
-      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/e46cd7539f63d2cd6dc5227b052ac6d83b7ee889ee89ab0b22c9c5a1af0aef17",
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/f401b58fa29bbe13fd199f584ee9859fd0f1a26af9f12da8c916ac8cb172ffd6",
       "protection": "Public",
       "isProtected": false,
-      "created": "2026-09-23 06:25:07",
-      "updated": "2026-09-23 06:25:07",
+      "created": "2026-10-01 07:17:03",
+      "updated": "2026-10-01 07:17:03",
       "builds": [
+        {
+          "buildKey": "b3c29afbc817b68ddfd623076493caae",
+          "version": "1.6.2-staging",
+          "buildVersion": "2",
+          "fileSize": 17172709,
+          "created": "2026-10-01 07:17:03"
+        },
         {
           "buildKey": "93be5e684cb889c01f99825843436c51",
           "version": "1.6.1-staging",
