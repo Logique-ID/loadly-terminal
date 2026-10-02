@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-02T01:31:18.197Z",
+  "generatedAt": "2026-10-02T08:20:03.136Z",
   "apps": [
     {
       "appKey": "71018f5dcebacd17442bbf8598adf170",
@@ -970,23 +970,30 @@
     },
     {
       "appKey": "168f71265ff50e97ae9ed249293ceb1f",
-      "buildKey": "6119d6923b380524bd8d5573f8d8978b",
+      "buildKey": "eb4e8414947fbc158da7f602247c105f",
       "name": "[DEV] JBA Indonesia",
-      "icon": "https://loadly.io/image/view/app_icons/ae3680f468ff33c6582360f7f991e53c/120",
+      "icon": "https://loadly.io/image/view/app_icons/eb0cf47ba55a940d0975067578848167/120",
       "platform": "Android",
       "version": "2.33.0-dev-",
-      "buildVersion": "7",
+      "buildVersion": "8",
       "identifier": "id.logique.jbabiddingrevamp.dev",
-      "fileSize": 118825098,
+      "fileSize": 118908967,
       "shortcut": "jba-bidding-dev",
       "installUrl": "https://loadly.io/jba-bidding-dev",
       "channels": [],
-      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/c1ae51762969c11fa1d9e6ea2ad0c0146d1f1b0275a9e823b7f75fa91fffb9e7",
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/30cd5acaaf36649374955e1efae208fbe345b14ae31a5d6df96865e826bd3823",
       "protection": "Public",
       "isProtected": false,
-      "created": "2026-09-30 08:44:44",
-      "updated": "2026-09-30 08:44:44",
+      "created": "2026-10-02 06:48:35",
+      "updated": "2026-10-02 06:48:35",
       "builds": [
+        {
+          "buildKey": "eb4e8414947fbc158da7f602247c105f",
+          "version": "2.33.0-dev-",
+          "buildVersion": "8",
+          "fileSize": 118908967,
+          "created": "2026-10-02 06:48:35"
+        },
         {
           "buildKey": "6119d6923b380524bd8d5573f8d8978b",
           "version": "2.33.0-dev-",
@@ -1035,23 +1042,30 @@
     },
     {
       "appKey": "5f71dd6619459536d72333344ab8a3a6",
-      "buildKey": "b5876263b12081d32f79932e56da6edb",
+      "buildKey": "0c039f85d3c4433bc8ae292b7be50b5d",
       "name": "[STG] JBA Indonesia",
-      "icon": "https://loadly.io/image/view/app_icons/509dbe2fb4781bcd0585a56b55cd1e56/120",
+      "icon": "https://loadly.io/image/view/app_icons/c3ee993310f775e49f0901f496f360fa/120",
       "platform": "Android",
       "version": "2.33.0",
-      "buildVersion": "5",
+      "buildVersion": "6",
       "identifier": "id.logique.jbabiddingrevamp.staging",
-      "fileSize": 117500595,
+      "fileSize": 117510703,
       "shortcut": "jba-bidding-stg",
       "installUrl": "https://loadly.io/jba-bidding-stg",
       "channels": [],
-      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/c91f32a43da23541cc2238da97bbf1cddca1cdca9dd26ef2c63e6c8cd4a72477",
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/f0dc9d401c7c0229d8376cb28f793f45bff75e44807a5c4a3d863d909b21ebe6",
       "protection": "Public",
       "isProtected": false,
-      "created": "2026-09-28 11:20:02",
-      "updated": "2026-09-28 11:20:02",
+      "created": "2026-10-02 02:11:59",
+      "updated": "2026-10-02 02:11:59",
       "builds": [
+        {
+          "buildKey": "0c039f85d3c4433bc8ae292b7be50b5d",
+          "version": "2.33.0",
+          "buildVersion": "6",
+          "fileSize": 117510703,
+          "created": "2026-10-02 02:11:59"
+        },
         {
           "buildKey": "b5876263b12081d32f79932e56da6edb",
           "version": "2.33.0",
