@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T06:48:40.207Z",
+  "generatedAt": "2026-10-05T15:50:12.745Z",
   "apps": [
     {
       "appKey": "71018f5dcebacd17442bbf8598adf170",
@@ -930,6 +930,36 @@
       ],
       "groupKey": "id.co.jba.inspire",
       "groupLabel": "Inspire"
+    },
+    {
+      "appKey": "d00c07555bf799bc41e4272390534442",
+      "buildKey": "ae37b333a3fecee55f48e91110ecf6bd",
+      "name": "[DEV] JBA BASTK",
+      "icon": "https://loadly.io/image/view/app_icons/a7df0afa944852e1f90ebcb9bae4baca/120",
+      "platform": "Android",
+      "version": "2.11.0-jbadev",
+      "buildVersion": "1",
+      "identifier": "id.logique.jbabastkjba.dev",
+      "fileSize": 18847432,
+      "shortcut": "jba-ebastk",
+      "installUrl": "https://loadly.io/jba-ebastk",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/75d98e6f80c2225d54a5cd77116c70aba62c992e2b801f97718db1ddccbda6e5",
+      "protection": "Public",
+      "isProtected": false,
+      "created": "2026-10-05 08:31:34",
+      "updated": "2026-10-05 08:31:34",
+      "builds": [
+        {
+          "buildKey": "ae37b333a3fecee55f48e91110ecf6bd",
+          "version": "2.11.0-jbadev",
+          "buildVersion": "1",
+          "fileSize": 18847432,
+          "created": "2026-10-05 08:31:34"
+        }
+      ],
+      "groupKey": "id.logique.jbabastkjba",
+      "groupLabel": "JBA BASTK"
     },
     {
       "appKey": "0169917bdc53bd749acdbcdc0deb9d25",
