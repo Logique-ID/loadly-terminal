@@ -12,7 +12,14 @@ export const ENDPOINTS = {
   listMy: '/app/listMy',   // POST: _api_key, page
   view: '/app/view',       // POST: _api_key, appKey, [buildKey]
   builds: '/app/builds',   // POST: _api_key, appKey|buildKey, page
+  install: '/app/install', // GET: _api_key, buildKey — 302 to a signed file URL
 };
+
+/**
+ * iOS installs go through itms-services with Loadly's public plist, which
+ * needs no API key. No iOS app exists yet, so this path is unverified.
+ */
+export const IOS_MANIFEST_BASE = 'https://loadly.io/app/plist';
 
 /**
  * Public install page for a shortcut URL.

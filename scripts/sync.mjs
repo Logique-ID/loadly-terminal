@@ -24,6 +24,7 @@ import {
   GROUP_MIN_SEGMENTS,
   ICON_BASE,
   INSTALL_TYPES,
+  IOS_MANIFEST_BASE,
   MAX_PAGES,
   MAX_RETRIES,
   PLATFORMS,
@@ -33,6 +34,9 @@ import {
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUTPUT = resolve(ROOT, 'data/apps.json');
+// Signed links change on every sync, so they live in their own gitignored file
+// instead of churning apps.json into a commit every run.
+const DOWNLOADS_OUTPUT = resolve(ROOT, 'data/downloads.json');
 
 async function loadApiKey() {
   const envFile = resolve(ROOT, '.env');
@@ -87,6 +91,55 @@ async function call(path, params, attempt = 1) {
 
   await sleep(REQUEST_DELAY_MS);
   return payload.data ?? payload;
+}
+
+/**
+ * A signed download URL plus when it stops working. Loadly's storage links
+ * carry an OSS-style `Expires` (unix seconds) param, about an hour out.
+ */
+function parseSignedUrl(location) {
+  let url;
+  try {
+    url = new URL(location);
+  } catch {
+    return null;
+  }
+  if (url.protocol !== 'https:') return null;
+  const expires = Number(url.searchParams.get('Expires'));
+  return {
+    url: url.href,
+    expiresAt: Number.isFinite(expires) && expires > 0 ? new Date(expires * 1000).toISOString() : null,
+  };
+}
+
+/**
+ * Direct download link for one public build. Android asks /app/install for its
+ * redirect target, since following it in the browser would need the API key.
+ * Protected apps get nothing: the API key skips their password or invitation.
+ */
+async function resolveDownload(apiKey, app, attempt = 1) {
+  if (app.isProtected || !app.buildKey) return null;
+  if (app.platform === 'iOS') {
+    const manifest = `${IOS_MANIFEST_BASE}/${app.buildKey}`;
+    return { url: `itms-services://?action=download-manifest&url=${manifest}`, expiresAt: null };
+  }
+
+  const query = new URLSearchParams({ _api_key: apiKey, buildKey: app.buildKey });
+  try {
+    const response = await fetch(`${BASE_URL}${ENDPOINTS.install}?${query}`, { redirect: 'manual' });
+    const location = response.headers.get('location');
+    if (response.status < 300 || response.status >= 400 || !location) {
+      throw new Error(`expected a redirect, got HTTP ${response.status}`);
+    }
+    await sleep(REQUEST_DELAY_MS);
+    const download = parseSignedUrl(location);
+    if (!download) throw new Error('redirect target is not an https URL');
+    return download;
+  } catch (error) {
+    if (attempt >= MAX_RETRIES) throw new Error(`${ENDPOINTS.install} failed: ${error.message}`);
+    await sleep(REQUEST_DELAY_MS * 4 * attempt);
+    return resolveDownload(apiKey, app, attempt + 1);
+  }
 }
 
 /** Loadly returns either a bare array or {list: [...]} depending on endpoint. */
@@ -368,9 +421,26 @@ async function main() {
     `${JSON.stringify({ generatedAt: new Date().toISOString(), apps }, null, 2)}\n`
   );
   console.log(`Wrote ${OUTPUT} (${apps.length} app(s))`);
+
+  // Keyed by buildKey, so a link never lands on a card whose build changed.
+  console.log('Resolving download links…');
+  const downloads = {};
+  for (const app of apps) {
+    try {
+      const download = await resolveDownload(apiKey, app);
+      if (download) downloads[app.buildKey] = download;
+    } catch (error) {
+      console.warn(`  ! ${app.name}: ${error.message}`);
+    }
+  }
+  await writeFile(
+    DOWNLOADS_OUTPUT,
+    `${JSON.stringify({ generatedAt: new Date().toISOString(), downloads }, null, 2)}\n`
+  );
+  console.log(`Wrote ${DOWNLOADS_OUTPUT} (${Object.keys(downloads).length} link(s))`);
 }
 
-export { assignGroups, cleanName, compareApps, groupKeyFor, groupKeyOf };
+export { assignGroups, cleanName, compareApps, groupKeyFor, groupKeyOf, parseSignedUrl };
 
 // Only sync when run as a script; importing this file (tests) must not fetch.
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

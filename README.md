@@ -47,7 +47,8 @@ publishes the site. Only `index.html`, `assets/` and `data/` are published —
 | Path | Purpose |
 | --- | --- |
 | `index.html`, `assets/` | The site. No dependencies, no build. |
-| `data/apps.json` | Generated output — the only thing the browser loads. |
+| `data/apps.json` | Generated app list, committed. |
+| `data/downloads.json` | Generated signed download links. Gitignored, deployed. |
 | `scripts/sync.mjs` | Calls the Loadly API and writes the JSON. |
 | `scripts/loadly.config.mjs` | Endpoints, field names, enums — edit here when the API changes. |
 | `scripts/grouping.test.mjs` | `npm test` — covers how apps are grouped into sections. |
@@ -113,6 +114,22 @@ for. Those groups show up in `data/apps.json` with a `name:` prefixed
 
 The real fix is on the publishing side: give the app a specific bundle
 identifier in Loadly (`id.logique.jbainventory.dev`) and the warning goes away.
+
+## Download buttons
+
+Each public app gets a **Download APK** button that fetches the latest build
+straight from Loadly storage, so the user skips the loadly.io install page.
+
+The browser cannot call `/app/install` itself because that endpoint needs the
+API key. `npm run sync` calls it once per app, keeps the 302 target (a signed
+URL that expires about an hour later) and writes it to `data/downloads.json`.
+That file changes on every sync, so it is gitignored and only deployed. CI runs
+every 30 minutes to keep a valid link live; the page hides a button whose link
+has expired.
+
+Protected apps get no button: the API key bypasses their password or
+invitation. iOS builds would get an `itms-services://` link to Loadly's public
+plist. No iOS app exists yet, so that path is untested.
 
 ## Notes
 

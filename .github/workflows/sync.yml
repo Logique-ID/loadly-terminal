@@ -2,7 +2,7 @@ name: Sync Loadly links
 
 on:
   schedule:
-    - cron: '0 * * * *' # hourly
+    - cron: '*/30 * * * *' # download links expire an hour after each sync
   workflow_dispatch:
   push:
     branches: [main]

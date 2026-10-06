@@ -6,6 +6,7 @@
   'use strict';
 
   const DATA_URL = 'data/apps.json';
+  const DOWNLOADS_URL = 'data/downloads.json';
 
   const listEl = document.getElementById('list');
   const statusEl = document.getElementById('status');
@@ -15,6 +16,7 @@
   const clearEl = document.getElementById('clear');
 
   let apps = [];
+  let downloads = {};
   let platform = 'All';
   let restored = false;
 
@@ -97,6 +99,28 @@
       setTimeout(() => { button.textContent = 'Copy link'; }, 1500);
     });
     return button;
+  }
+
+  /**
+   * Direct download for an app's latest build, from data/downloads.json.
+   * Android links are signed and expire about an hour after the sync, so an
+   * expired one is left out, and one that expires while the page is open says
+   * so instead of failing at the storage host.
+   */
+  function downloadButton(app) {
+    const download = downloads[app.buildKey];
+    if (!download || !download.url) return null;
+    const expired = () => download.expiresAt && Date.parse(download.expiresAt) - 60000 < Date.now();
+    if (expired()) return null;
+
+    const label = app.platform === 'iOS' ? 'Install' : 'Download APK';
+    const link = el('a', { className: 'copy download', href: download.url, textContent: label });
+    link.addEventListener('click', (event) => {
+      if (!expired()) return;
+      event.preventDefault();
+      link.textContent = 'Link expired — reload the page';
+    });
+    return link;
   }
 
   /** Toggle button that shows or hides an app's QR code (hidden by default). */
@@ -245,6 +269,7 @@
               ])
             )
           ),
+          downloadButton(app),
         ])
       );
     } else if (app.installUrl) {
@@ -260,6 +285,7 @@
               textContent: app.installUrl,
             }),
             el('div', { className: 'install-buttons' }, [
+              downloadButton(app),
               copyButton(app.installUrl),
               qr ? qr.button : null,
             ]),
@@ -365,7 +391,20 @@
     );
   }
 
+  /** Download links are optional: without the file the cards keep their page links. */
+  async function loadDownloads() {
+    try {
+      const response = await fetch(`${DOWNLOADS_URL}?t=${Date.now()}`);
+      if (!response.ok) return {};
+      const data = await response.json();
+      return data && typeof data.downloads === 'object' && data.downloads ? data.downloads : {};
+    } catch {
+      return {};
+    }
+  }
+
   async function load() {
+    const pendingDownloads = loadDownloads();
     try {
       const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -374,6 +413,7 @@
       // Already ordered by scripts/sync.mjs (group label, then bundle
       // identifier), so cards never shuffle between syncs.
       apps = Array.isArray(data.apps) ? data.apps : [];
+      downloads = await pendingDownloads;
       generatedEl.textContent = data.generatedAt
         ? `Last synced ${new Date(data.generatedAt).toLocaleString()}`
         : '';
