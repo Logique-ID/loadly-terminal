@@ -61,6 +61,9 @@ jobs:
         run: |
           mkdir -p _site
           cp -r index.html assets data .nojekyll _site/
+          # Version the asset URLs with the commit so browsers drop cached JS/CSS
+          # after each deploy. Only the published copy is changed.
+          sed -i "s#assets/style.css#assets/style.css?v=${GITHUB_SHA::7}#; s#assets/app.js#assets/app.js?v=${GITHUB_SHA::7}#" _site/index.html
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
