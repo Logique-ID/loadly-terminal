@@ -173,6 +173,9 @@
     return { button, img };
   }
 
+  /** "1 app" / "3 apps". */
+  const plural = (count, word) => `${count} ${word}${count === 1 ? '' : 's'}`;
+
   /** "3 days ago" style label; falls back to the locale date for old builds. */
   const formatRelative = (value) => {
     if (!value) return '';
@@ -182,8 +185,8 @@
     if (days <= 0) return 'today';
     if (days === 1) return 'yesterday';
     if (days < 30) return `${days} days ago`;
-    if (days < 365) return `${Math.round(days / 30)} mo ago`;
-    return `${Math.round(days / 365)} yr ago`;
+    if (days < 365) return `${plural(Math.round(days / 30), 'month')} ago`;
+    return `${plural(Math.round(days / 365), 'year')} ago`;
   };
 
   /** Signed size difference against the previous (older) build. */
@@ -246,7 +249,11 @@
       el('div', { className: 'badges' }, [
         el('span', { className: 'badge', textContent: app.platform }),
         app.isProtected
-          ? el('span', { className: 'badge locked', textContent: `🔒 ${app.protection}` })
+          ? el('span', {
+              className: 'badge locked',
+              textContent: `🔒 ${app.protection}`,
+              title: `Protected on Loadly (${String(app.protection).toLowerCase()}). Open the install page to get access.`,
+            })
           : el('span', { className: 'badge', textContent: app.protection }),
       ]),
     ]);
@@ -356,10 +363,11 @@
         ])
       )
     );
-    const count = visible.length
-      ? `${visible.length} of ${apps.length} app(s)`
-      : 'No apps match this filter.';
-    statusEl.textContent = restored ? `${count} — restored from your last visit` : count;
+    let count;
+    if (!visible.length) count = 'No apps match. Try a shorter search or pick All.';
+    else if (visible.length === apps.length) count = plural(apps.length, 'app');
+    else count = `Showing ${visible.length} of ${plural(apps.length, 'app')}`;
+    statusEl.textContent = restored ? `${count} · filters kept from your last visit` : count;
     statusEl.className = 'status';
 
     const active = Boolean(query) || platform !== 'All';
@@ -433,7 +441,7 @@
       buildFilters();
       render();
     } catch (error) {
-      statusEl.textContent = `Could not load ${DATA_URL} — ${error.message}. Run "npm run sync" first.`;
+      statusEl.textContent = `Couldn't load the app list (${error.message}). Reload the page. Running locally? Run "npm run sync" first.`;
       statusEl.className = 'status error';
     }
   }
