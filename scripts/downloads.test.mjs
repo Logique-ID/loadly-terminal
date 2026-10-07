@@ -1,6 +1,6 @@
 /**
- * The page hides a download button once its signed link has expired, so the
- * expiry read from Loadly's redirect has to be right.
+ * The page swaps a download button for the install page once its signed link
+ * has expired, so the expiry read from Loadly's redirect has to be right.
  *
  *   npm test
  */

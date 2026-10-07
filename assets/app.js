@@ -103,22 +103,39 @@
 
   /**
    * Direct download for an app's latest build, from data/downloads.json.
-   * Android links are signed and expire about an hour after the sync, so an
-   * expired one is left out, and one that expires while the page is open says
-   * so instead of failing at the storage host.
+   * Android links are signed and expire about an hour after the sync, and the
+   * scheduled sync often runs late, so an expired link falls back to the
+   * Loadly install page instead of disappearing. A link that expires while the
+   * page is open switches over on click rather than failing at the storage host.
    */
   function downloadButton(app) {
     const download = downloads[app.buildKey];
     if (!download || !download.url) return null;
     const expired = () => download.expiresAt && Date.parse(download.expiresAt) - 60000 < Date.now();
-    if (expired()) return null;
+    if (expired() && !app.installUrl) return null;
 
-    const label = app.platform === 'iOS' ? 'Install' : 'Download APK';
-    const link = el('a', { className: 'copy download', href: download.url, textContent: label });
+    const link = el('a', { className: 'copy download' });
+    const showFallback = () => {
+      link.href = app.installUrl;
+      link.target = '_blank';
+      link.rel = 'noreferrer';
+      link.textContent = 'Open install page';
+      link.title = 'The direct link has expired. It comes back after the next sync.';
+      link.classList.add('expired');
+    };
+
+    if (expired()) {
+      showFallback();
+      return link;
+    }
+
+    link.href = download.url;
+    link.textContent = app.platform === 'iOS' ? 'Install' : 'Download APK';
     link.addEventListener('click', (event) => {
-      if (!expired()) return;
+      if (!expired() || link.classList.contains('expired')) return;
       event.preventDefault();
-      link.textContent = 'Link expired — reload the page';
+      showFallback();
+      window.open(app.installUrl, '_blank', 'noreferrer');
     });
     return link;
   }

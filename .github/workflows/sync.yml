@@ -12,9 +12,11 @@ permissions:
   pages: write
   id-token: write
 
+# A newer run replaces an older one, so one run stuck waiting on the Pages
+# environment cannot hold back every later sync.
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   sync:

@@ -230,6 +230,8 @@ a.copy:hover { border-color: var(--accent); color: var(--accent); }
 a.copy { text-decoration: none; }
 a.download { border-color: var(--accent); background: var(--accent); color: var(--surface); font-weight: 600; }
 a.download:hover { background: var(--accent-soft); }
+a.download.expired { background: transparent; color: var(--accent); }
+a.download.expired:hover { background: var(--accent-soft); }
 
 /* Version history ------------------------------------------------------- */
 
