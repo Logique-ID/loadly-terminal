@@ -7,6 +7,9 @@
 
   const DATA_URL = 'data/apps.json';
   const DOWNLOADS_URL = 'data/downloads.json';
+  // worker/ deployed on Cloudflare. It resolves a fresh signed link on click,
+  // so its buttons never expire. Empty means fall back to data/downloads.json.
+  const DOWNLOAD_BASE = '';
 
   const listEl = document.getElementById('list');
   const statusEl = document.getElementById('status');
@@ -109,6 +112,14 @@
    * page is open switches over on click rather than failing at the storage host.
    */
   function downloadButton(app) {
+    if (DOWNLOAD_BASE && app.platform === 'Android' && !app.isProtected && app.buildKey) {
+      const link = el('a', { className: 'copy download' });
+      link.href = `${DOWNLOAD_BASE}/${encodeURIComponent(app.buildKey)}`;
+      link.rel = 'noreferrer';
+      link.textContent = 'Download APK';
+      return link;
+    }
+
     const download = downloads[app.buildKey];
     if (!download || !download.url) return null;
     const expired = () => download.expiresAt && Date.parse(download.expiresAt) - 60000 < Date.now();

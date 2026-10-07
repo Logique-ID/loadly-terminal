@@ -52,6 +52,7 @@ publishes the site. Only `index.html`, `assets/` and `data/` are published —
 | `scripts/sync.mjs` | Calls the Loadly API and writes the JSON. |
 | `scripts/loadly.config.mjs` | Endpoints, field names, enums — edit here when the API changes. |
 | `scripts/grouping.test.mjs` | `npm test` — covers how apps are grouped into sections. |
+| `worker/` | Cloudflare Worker that turns a click into a fresh signed download link. |
 | `.env.example` | Template for `.env`. |
 
 Grouping rules live in `scripts/sync.mjs` only. The page reads the `groupKey`
@@ -127,6 +128,26 @@ That file changes on every sync, so it is gitignored and only deployed. CI runs
 every 30 minutes to keep a valid link live, but GitHub often runs scheduled
 workflows hours late. Once a link has expired the button turns into
 **Open install page**, which goes to the app's loadly.io page instead.
+
+### Download worker (links that never expire)
+
+[`worker/`](worker/) is a Cloudflare Worker that holds the API key and resolves
+the signed link when the user clicks: `GET /<buildKey>` → 302 to a fresh
+storage URL. It only serves buildKeys that the published `data/apps.json` lists
+as the latest public Android build, so it cannot be used to skip a protected
+app's password. Signed links are cached at the edge until 5 minutes before they
+expire, which keeps clicks well under Loadly's hourly rate limit.
+
+```bash
+cd worker
+npx wrangler secret put LOADLY_API_KEY
+npx wrangler deploy
+```
+
+Then set `DOWNLOAD_BASE` in `assets/app.js` to the worker URL. While it is
+empty the page uses `data/downloads.json` as described above. Once the worker
+is live, the 30-minute cron only needs to pick up new builds and can run less
+often.
 
 Protected apps get no button: the API key bypasses their password or
 invitation. iOS builds would get an `itms-services://` link to Loadly's public

@@ -1,0 +1,8 @@
+# Deploy: cd worker && npx wrangler deploy
+# Key:    npx wrangler secret put LOADLY_API_KEY
+name = "loadly-download"
+main = "index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+APPS_URL = "https://logique-id.github.io/loadly-terminal/data/apps.json"
