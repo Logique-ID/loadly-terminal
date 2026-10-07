@@ -72,7 +72,8 @@ empty = use `downloads.json`), `SESSION_KEY`.
 | `readSession`, `writeSession`, `restoreSession` | Remember search and platform filter in `localStorage`. |
 | `groupKeyOf`, `groupLabelOf` | Read the sync's grouping fields, with a fallback for old JSON. |
 | `copyButton` | Copy-link button. |
-| `downloadButton` | Worker link, signed link, or "Open install page" once the signed link expires. `null` for protected apps. |
+| `openButton` | "Open link" button, opens an install or channel URL in a new tab. |
+| `downloadButton` | Worker link or signed link. `null` for protected apps and once the signed link expires. |
 | `qrToggle` | QR code toggle. Hidden on cards that show channels. |
 | `buildHistory` | Version history list from `app.builds`. |
 | `buildCard` | One app card. |

@@ -204,14 +204,6 @@ h1 { margin: 0; font-size: 22px; letter-spacing: -0.01em; }
 
 .channel-label { font-size: 13px; font-weight: 600; }
 
-.install-actions { display: flex; flex-direction: column; gap: 6px; min-width: 0; flex: 1; }
-
-.link {
-  color: var(--accent);
-  font-size: 13px;
-  word-break: break-all;
-}
-
 button.copy,
 a.copy {
   align-self: flex-start;
@@ -230,8 +222,6 @@ a.copy:hover { border-color: var(--accent); color: var(--accent); }
 a.copy { text-decoration: none; }
 a.download { border-color: var(--accent); background: var(--accent); color: var(--surface); font-weight: 600; }
 a.download:hover { background: var(--accent-soft); }
-a.download.expired { background: transparent; color: var(--accent); }
-a.download.expired:hover { background: var(--accent-soft); }
 
 /* Version history ------------------------------------------------------- */
 

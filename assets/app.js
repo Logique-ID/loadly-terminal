@@ -104,12 +104,24 @@
     return button;
   }
 
+  /** Button that opens an install link in a new tab. */
+  function openButton(url) {
+    return el('a', {
+      className: 'copy',
+      href: url,
+      target: '_blank',
+      rel: 'noreferrer',
+      textContent: 'Open link',
+    });
+  }
+
   /**
    * Direct download for an app's latest build, from data/downloads.json.
    * Android links are signed and expire about an hour after the sync, and the
-   * scheduled sync often runs late, so an expired link falls back to the
-   * Loadly install page instead of disappearing. A link that expires while the
-   * page is open switches over on click rather than failing at the storage host.
+   * scheduled sync often runs late. An expired link is hidden rather than
+   * shown as a dead button; the card's "Open link" button still reaches the
+   * install page. A link that expires while the page is open hides itself on
+   * click and opens the install page instead of failing at the storage host.
    */
   function downloadButton(app) {
     if (DOWNLOAD_BASE && app.platform === 'Android' && !app.isProtected && app.buildKey) {
@@ -123,30 +135,16 @@
     const download = downloads[app.buildKey];
     if (!download || !download.url) return null;
     const expired = () => download.expiresAt && Date.parse(download.expiresAt) - 60000 < Date.now();
-    if (expired() && !app.installUrl) return null;
+    if (expired()) return null;
 
     const link = el('a', { className: 'copy download' });
-    const showFallback = () => {
-      link.href = app.installUrl;
-      link.target = '_blank';
-      link.rel = 'noreferrer';
-      link.textContent = 'Open install page';
-      link.title = 'The direct link has expired. It comes back after the next sync.';
-      link.classList.add('expired');
-    };
-
-    if (expired()) {
-      showFallback();
-      return link;
-    }
-
     link.href = download.url;
     link.textContent = app.platform === 'iOS' ? 'Install' : 'Download APK';
     link.addEventListener('click', (event) => {
-      if (!expired() || link.classList.contains('expired')) return;
+      if (!expired()) return;
       event.preventDefault();
-      showFallback();
-      window.open(app.installUrl, '_blank', 'noreferrer');
+      link.remove();
+      if (app.installUrl) window.open(app.installUrl, '_blank', 'noreferrer');
     });
     return link;
   }
@@ -284,14 +282,8 @@
             channels.map((channel) =>
               el('li', {}, [
                 el('span', { className: 'channel-label', textContent: channel.label }),
-                el('div', { className: 'install-actions' }, [
-                  el('a', {
-                    className: 'link',
-                    href: channel.url,
-                    target: '_blank',
-                    rel: 'noreferrer',
-                    textContent: channel.url,
-                  }),
+                el('div', { className: 'install-buttons' }, [
+                  openButton(channel.url),
                   copyButton(channel.url),
                 ]),
               ])
@@ -304,19 +296,11 @@
       const qr = app.qrCodeUrl ? qrToggle(app) : null;
       card.append(
         el('div', { className: 'install' }, [
-          el('div', { className: 'install-actions' }, [
-            el('a', {
-              className: 'link',
-              href: app.installUrl,
-              target: '_blank',
-              rel: 'noreferrer',
-              textContent: app.installUrl,
-            }),
-            el('div', { className: 'install-buttons' }, [
-              downloadButton(app),
-              copyButton(app.installUrl),
-              qr ? qr.button : null,
-            ]),
+          el('div', { className: 'install-buttons' }, [
+            downloadButton(app),
+            openButton(app.installUrl),
+            copyButton(app.installUrl),
+            qr ? qr.button : null,
           ]),
           qr ? qr.img : null,
         ])

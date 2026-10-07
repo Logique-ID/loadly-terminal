@@ -126,8 +126,8 @@ API key. `npm run sync` calls it once per app, keeps the 302 target (a signed
 URL that expires about an hour later) and writes it to `data/downloads.json`.
 That file changes on every sync, so it is gitignored and only deployed. CI runs
 every 30 minutes to keep a valid link live, but GitHub often runs scheduled
-workflows hours late. Once a link has expired the button turns into
-**Open install page**, which goes to the app's loadly.io page instead.
+workflows hours late. Once a link has expired the button is hidden, and the
+card's **Open link** button still opens the app's loadly.io page in a new tab.
 
 ### Download worker (links that never expire)
 
