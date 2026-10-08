@@ -75,7 +75,8 @@ with rebase) → publish `index.html`, `assets/`, `data/`, `.nojekyll` to GitHub
 Pages. A failing test blocks the deploy.
 
 Worker: `cd worker && npx wrangler secret put LOADLY_API_KEY && npx wrangler deploy`,
-then set `DOWNLOAD_BASE` in `assets/app.js`. While `DOWNLOAD_BASE` is empty the
+then set `DOWNLOAD_BASE` in `assets/app.js`. It points at
+`https://loadly-download.yama-lgq.workers.dev`. If `DOWNLOAD_BASE` is empty the
 page falls back to `data/downloads.json`, whose links expire about an hour
 after each sync.
 

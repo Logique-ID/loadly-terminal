@@ -9,7 +9,7 @@
   const DOWNLOADS_URL = 'data/downloads.json';
   // worker/ deployed on Cloudflare. It resolves a fresh signed link on click,
   // so its buttons never expire. Empty means fall back to data/downloads.json.
-  const DOWNLOAD_BASE = '';
+  const DOWNLOAD_BASE = 'https://loadly-download.yama-lgq.workers.dev';
 
   const listEl = document.getElementById('list');
   const statusEl = document.getElementById('status');
@@ -116,9 +116,11 @@
   }
 
   /**
-   * Direct download for an app's latest build, from data/downloads.json.
-   * Android links are signed and expire about an hour after the sync, and the
-   * scheduled sync often runs late. An expired link is hidden rather than
+   * Direct download for an app's latest build. Public Android builds go
+   * through the worker at DOWNLOAD_BASE. Everything else, and Android too when
+   * DOWNLOAD_BASE is empty, uses data/downloads.json. Its Android links are
+   * signed and expire about an hour after the sync, and the scheduled sync
+   * often runs late. An expired link is hidden rather than
    * shown as a dead button; the card's "Open link" button still reaches the
    * install page. A link that expires while the page is open hides itself on
    * click and opens the install page instead of failing at the storage host.

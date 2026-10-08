@@ -144,8 +144,9 @@ npx wrangler secret put LOADLY_API_KEY
 npx wrangler deploy
 ```
 
-Then set `DOWNLOAD_BASE` in `assets/app.js` to the worker URL. While it is
-empty the page uses `data/downloads.json` as described above. Once the worker
+Then set `DOWNLOAD_BASE` in `assets/app.js` to the worker URL. It is live at
+`https://loadly-download.yama-lgq.workers.dev`. If `DOWNLOAD_BASE` is empty the
+page uses `data/downloads.json` as described above. Once the worker
 is live, the 30-minute cron only needs to pick up new builds and can run less
 often.
 
