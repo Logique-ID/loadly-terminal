@@ -52,8 +52,8 @@ browser ──> worker/index.js ──(checks published apps.json)──> Loadly
 | `loadApiKey` | Reads `LOADLY_API_KEY` from `.env`, then the environment. |
 | `call` | One API request with retry and delay. |
 | `fetchAllPages` | Pages through a list endpoint up to `MAX_PAGES`. |
-| `normalize` | Raw API object → the app shape written to `apps.json`. |
-| `resolveDownload` | Android: calls `/app/install`, keeps the 302 target. iOS: `itms-services://` plist link (untested). Skips protected apps. |
+| `normalize` | Raw API object → the app shape written to `apps.json`. Sets `downloadable` from `INSTALL_TYPES`. |
+| `resolveDownload` | Android: calls `/app/install`, keeps the 302 target. iOS: `itms-services://` plist link (untested). Skips apps that aren't `downloadable`. |
 | `parseSignedUrl` | Validates an https URL and reads its `Expires` param into `expiresAt`. Exported. |
 | `groupKeyFor` | Identifier with env suffixes stripped (dotted or glued). Exported. |
 | `cleanName` | App name with `[DEV]`, `(staging)` and trailing env words removed. Exported. |
@@ -73,7 +73,7 @@ empty = use `downloads.json`), `SESSION_KEY`.
 | `groupKeyOf`, `groupLabelOf` | Read the sync's grouping fields, with a fallback for old JSON. |
 | `copyButton` | Copy-link button. |
 | `openButton` | "Open link" button, opens an install or channel URL in a new tab. |
-| `downloadButton` | Worker link or signed link. `null` for protected apps and once the signed link expires. |
+| `downloadButton` | Worker link or signed link. `null` for apps that aren't `downloadable` and once the signed link expires. |
 | `qrToggle` | QR code toggle. Hidden on cards that show channels. |
 | `buildHistory` | Version history list from `app.builds`. |
 | `buildCard` | One app card. |
@@ -87,7 +87,7 @@ empty = use `downloads.json`), `SESSION_KEY`.
 | Name | Purpose |
 | --- | --- |
 | `fetch` handler | Validates the buildKey, checks it against `APPS_URL`, serves from edge cache or resolves. Falls back to `installUrl` when Loadly fails. |
-| `findApp` | Finds the buildKey among latest public Android builds in the published JSON (cached `APPS_CACHE_S`). |
+| `findApp` | Finds the buildKey among latest `downloadable` Android builds in the published JSON (cached `APPS_CACHE_S`). |
 | `resolve` | Calls Loadly `/app/install` with the secret key. |
 | `redirect`, `notFound` | Response helpers. |
 | `EXPIRY_MARGIN_S` | Cached links are dropped this many seconds before they expire. |

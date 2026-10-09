@@ -134,8 +134,8 @@ card's **Open link** button still opens the app's loadly.io page in a new tab.
 [`worker/`](worker/) is a Cloudflare Worker that holds the API key and resolves
 the signed link when the user clicks: `GET /<buildKey>` → 302 to a fresh
 storage URL. It only serves buildKeys that the published `data/apps.json` lists
-as the latest public Android build, so it cannot be used to skip a protected
-app's password. Signed links are cached at the edge until 5 minutes before they
+as the latest downloadable Android build (`downloadable: true`), so it cannot be
+used to skip an invitation or question. Signed links are cached at the edge until 5 minutes before they
 expire, which keeps clicks well under Loadly's hourly rate limit.
 
 ```bash
@@ -150,14 +150,18 @@ page uses `data/downloads.json` as described above. Once the worker
 is live, the 30-minute cron only needs to pick up new builds and can run less
 often.
 
-Protected apps get no button: the API key bypasses their password or
-invitation. iOS builds would get an `itms-services://` link to Loadly's public
+Password-protected Android apps get a button too. The API key skips the
+password, so the Loadly password only stops people who have the loadly.io link
+without this site. Anyone who can open this site can download them. To turn this
+off, remove `siteDownload` from type 2 in `INSTALL_TYPES`. Invitation and
+question apps get no button. iOS builds would get an `itms-services://` link to Loadly's public
 plist. No iOS app exists yet, so that path is untested.
 
 ## Notes
 
 - Password / invitation / question-protected apps are listed with a 🔒 badge.
-  Passwords and answers are never fetched or published.
+  Passwords and answers are never fetched or published. Password apps still
+  get a download button (see above).
 - `data/apps.json` contains only publicly shareable fields — no API key.
 - An entry in `CHANNELS` whose shortcut matches no app is reported by
   `npm run sync`, so a shortcut renamed in the dashboard cannot silently drop

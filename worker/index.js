@@ -8,10 +8,11 @@
  * key and resolves the link when the user clicks, so the button never goes
  * stale.
  *
- * Only builds that the published data/apps.json lists as the latest public
- * Android build are served. Without that check anyone could pass the buildKey
- * of a password- or invitation-protected app and the API key would skip its
- * protection.
+ * Only builds that the published data/apps.json lists as the latest
+ * downloadable Android build are served: public ones, plus password-protected
+ * ones (INSTALL_TYPES.siteDownload). Without that check anyone could pass the
+ * buildKey of an invitation- or question-protected app and the API key would
+ * skip its protection.
  *
  * Env: LOADLY_API_KEY (secret), APPS_URL (the published data/apps.json).
  */
@@ -58,13 +59,16 @@ export default {
   },
 };
 
-/** The latest public Android build with this key, or null. */
+/** The latest downloadable Android build with this key, or null. */
 async function findApp(appsUrl, buildKey) {
   const response = await fetch(appsUrl, { cf: { cacheTtl: APPS_CACHE_S, cacheEverything: true } });
   if (!response.ok) throw new Error(`apps.json: HTTP ${response.status}`);
   const { apps = [] } = await response.json();
   return (
-    apps.find((app) => app.buildKey === buildKey && app.platform === 'Android' && !app.isProtected) ?? null
+    // An apps.json published before `downloadable` existed falls back to isProtected.
+    apps.find(
+      (app) => app.buildKey === buildKey && app.platform === 'Android' && (app.downloadable ?? !app.isProtected),
+    ) ?? null
   );
 }
 

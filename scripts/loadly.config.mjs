@@ -59,10 +59,16 @@ export const PLATFORMS = {
   2: 'Android',
 };
 
-/** buildInstallType -> how the install page is protected. */
+/**
+ * buildInstallType -> how the install page is protected.
+ *
+ * `siteDownload` lets the site and the worker serve a protected Android build
+ * anyway. The API key skips the protection, so the Loadly password only stops
+ * people who have the loadly.io link without this site.
+ */
 export const INSTALL_TYPES = {
   1: { label: 'Public', protected: false },
-  2: { label: 'Password', protected: true },
+  2: { label: 'Password', protected: true, siteDownload: true },
   3: { label: 'Invitation', protected: true },
   4: { label: 'Question', protected: true },
 };

@@ -113,12 +113,13 @@ function parseSignedUrl(location) {
 }
 
 /**
- * Direct download link for one public build. Android asks /app/install for its
- * redirect target, since following it in the browser would need the API key.
- * Protected apps get nothing: the API key skips their password or invitation.
+ * Direct download link for one downloadable build. Android asks /app/install
+ * for its redirect target, since following it in the browser would need the
+ * API key. Other protected apps get nothing: the API key skips their
+ * invitation or question.
  */
 async function resolveDownload(apiKey, app, attempt = 1) {
-  if (app.isProtected || !app.buildKey) return null;
+  if (!app.downloadable || !app.buildKey) return null;
   if (app.platform === 'iOS') {
     const manifest = `${IOS_MANIFEST_BASE}/${app.buildKey}`;
     return { url: `itms-services://?action=download-manifest&url=${manifest}`, expiresAt: null };
@@ -167,6 +168,7 @@ const iconUrl = (value) => {
 function normalize(raw, extra = {}) {
   const installType = Number(pick(raw, 'installType') ?? 1);
   const install = INSTALL_TYPES[installType] ?? { label: 'Unknown', protected: false };
+  const platform = PLATFORMS[Number(pick(raw, 'platform'))] ?? 'Unknown';
   const shortcut = pick(raw, 'shortcutUrl');
   const channels = (CHANNELS[shortcut] ?? []).map((channel) => ({
     label: channel.label,
@@ -179,7 +181,7 @@ function normalize(raw, extra = {}) {
     buildKey: pick(raw, 'buildKey'),
     name: pick(raw, 'name'),
     icon: iconUrl(pick(raw, 'icon')),
-    platform: PLATFORMS[Number(pick(raw, 'platform'))] ?? 'Unknown',
+    platform,
     version: pick(raw, 'version'),
     buildVersion: pick(raw, 'buildVersion'),
     identifier: pick(raw, 'identifier'),
@@ -190,6 +192,8 @@ function normalize(raw, extra = {}) {
     qrCodeUrl: pick(raw, 'qrCodeUrl'),
     protection: install.label,
     isProtected: install.protected,
+    // iOS installs use Loadly's public plist, which still asks for the password.
+    downloadable: !install.protected || (Boolean(install.siteDownload) && platform === 'Android'),
     created: pick(raw, 'created'),
     updated: pick(raw, 'updated'),
     ...extra,

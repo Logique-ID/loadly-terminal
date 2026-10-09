@@ -116,7 +116,7 @@
   }
 
   /**
-   * Direct download for an app's latest build. Public Android builds go
+   * Direct download for an app's latest build. Downloadable Android builds go
    * through the worker at DOWNLOAD_BASE. Everything else, and Android too when
    * DOWNLOAD_BASE is empty, uses data/downloads.json. Its Android links are
    * signed and expire about an hour after the sync, and the scheduled sync
@@ -126,7 +126,7 @@
    * click and opens the install page instead of failing at the storage host.
    */
   function downloadButton(app) {
-    if (DOWNLOAD_BASE && app.platform === 'Android' && !app.isProtected && app.buildKey) {
+    if (DOWNLOAD_BASE && app.platform === 'Android' && app.downloadable && app.buildKey) {
       const link = el('a', { className: 'copy download' });
       link.href = `${DOWNLOAD_BASE}/${encodeURIComponent(app.buildKey)}`;
       link.rel = 'noreferrer';
@@ -254,7 +254,9 @@
           ? el('span', {
               className: 'badge locked',
               textContent: `🔒 ${app.protection}`,
-              title: `Protected on Loadly (${String(app.protection).toLowerCase()}). Open the install page to get access.`,
+              title: app.downloadable
+                ? `Protected on Loadly (${String(app.protection).toLowerCase()}). The download here skips it.`
+                : `Protected on Loadly (${String(app.protection).toLowerCase()}). Open the install page to get access.`,
             })
           : el('span', { className: 'badge', textContent: app.protection }),
       ]),

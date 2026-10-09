@@ -35,9 +35,11 @@ Node 18+ (CI uses 22). Nothing to install.
   `worker/index.js` read `LOADLY_API_KEY`. Never add it to `assets/`,
   `data/`, or anything the workflow copies into `_site/`.
 - **Never fetch or publish passwords, invitation data or question answers.**
-  Protected apps (`isProtected`) get a lock badge and no download button,
-  because the API key bypasses their protection. The worker enforces the same
-  check against the published `data/apps.json`.
+  Protected apps (`isProtected`) get a lock badge. The API key bypasses their
+  protection, so only apps with `downloadable: true` get a download button:
+  public apps, plus password-protected Android apps (`siteDownload` in
+  `INSTALL_TYPES`). Invitation and question apps stay locked. The worker
+  enforces the same check against the published `data/apps.json`.
 - **Grouping logic lives only in `scripts/sync.mjs`.** The page reads
   `groupKey` / `groupLabel` from the JSON. Don't reimplement it in
   `assets/app.js`. Sorting is the same: `compareApps` orders `apps.json` and
