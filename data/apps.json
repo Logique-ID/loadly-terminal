@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T06:24:01.841Z",
+  "generatedAt": "2026-10-09T13:32:05.031Z",
   "apps": [
     {
       "appKey": "71018f5dcebacd17442bbf8598adf170",
@@ -34,6 +34,37 @@
           "buildVersion": "1",
           "fileSize": 17172990,
           "created": "2026-09-23 06:17:20"
+        }
+      ],
+      "groupKey": "id.jba.inventory.flow",
+      "groupLabel": "[DEV] JBA Inventory Flow Control"
+    },
+    {
+      "appKey": "02cef0f85abdb4ccc446bed9ccc4554a",
+      "buildKey": "40a9d7cc179cd3ce374c05ab8af88c90",
+      "name": "JBA Inventory Flow Control",
+      "icon": "https://loadly.io/image/view/app_icons/70a5bc1c5098b53d991f25c8063710e0/120",
+      "platform": "Android",
+      "version": "1.7.0-live",
+      "buildVersion": "1",
+      "identifier": "id.jba.inventory.flow.live",
+      "fileSize": 14068010,
+      "shortcut": "jba-inv-live",
+      "installUrl": "https://loadly.io/jba-inv-live",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/293922f6a06e97f9de9118a2a2591d05fc618d304e9a91c188e9c33d3a510fe9",
+      "protection": "Public",
+      "isProtected": false,
+      "downloadable": true,
+      "created": "2026-10-09 08:22:20",
+      "updated": "2026-10-09 08:22:20",
+      "builds": [
+        {
+          "buildKey": "40a9d7cc179cd3ce374c05ab8af88c90",
+          "version": "1.7.0-live",
+          "buildVersion": "1",
+          "fileSize": 14068010,
+          "created": "2026-10-09 08:22:20"
         }
       ],
       "groupKey": "id.jba.inventory.flow",
@@ -962,8 +993,8 @@
       "installUrl": "https://loadly.io/jba-ebastk",
       "channels": [],
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/ce6af9c2de5483bc7e44b0326d357e7f812f3255b51294f232da773d1179cd48",
-      "protection": "Password",
-      "isProtected": true,
+      "protection": "Public",
+      "isProtected": false,
       "downloadable": true,
       "created": "2026-10-06 04:50:37",
       "updated": "2026-10-06 04:50:37",
@@ -1222,8 +1253,8 @@
       "buildVersion": "2",
       "identifier": "id.logique.live",
       "fileSize": 17161086,
-      "shortcut": "jba-inv-live",
-      "installUrl": "https://loadly.io/jba-inv-live",
+      "shortcut": "jba-inv-live1",
+      "installUrl": "https://loadly.io/jba-inv-live1",
       "channels": [],
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/bc56cbfcd3387c49b9504e2f4c09bea67bc676c968a344726b54ffccd51d2a1f",
       "protection": "Public",
