@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T00:01:33.530Z",
+  "generatedAt": "2026-10-09T05:37:27.992Z",
   "apps": [
     {
       "appKey": "71018f5dcebacd17442bbf8598adf170",
@@ -17,6 +17,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/008ca1d2be432da9fcb54ccb8193002c1b6a3fd2dd4c2f378898f3a67bb253d4",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-09-23 07:03:05",
       "updated": "2026-09-23 07:03:05",
       "builds": [
@@ -54,6 +55,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/f401b58fa29bbe13fd199f584ee9859fd0f1a26af9f12da8c916ac8cb172ffd6",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-10-01 07:17:03",
       "updated": "2026-10-01 07:17:03",
       "builds": [
@@ -91,6 +93,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/a5a5026655fd01e2076602a4305642fcff98f92885e1b995932f80fad655a861",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-08-11 07:16:01",
       "updated": "2026-08-11 07:16:01",
       "builds": [
@@ -184,6 +187,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/ac2e2f9272768846c99eeb1db13f91d269967e4b9df853a43a32671d00cabbdf",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-07-14 04:40:19",
       "updated": "2026-07-14 04:40:19",
       "builds": [
@@ -305,6 +309,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/2c9339ddce9b9ccbd9d62ad303b93bc103fd00dbe4605a5b9b097b29343aaf7f",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-08-11 02:08:44",
       "updated": "2026-08-11 02:08:44",
       "builds": [
@@ -405,6 +410,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/4c45bb878b5bb2cfe556a1f6c10e6b7f9adbd14945cfc610fe1abdbb4f77dc6d",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-05-06 01:28:59",
       "updated": "2026-05-06 01:28:59",
       "builds": [
@@ -526,6 +532,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/e870793a70257ff2eac6582add683e904b36fd62ee5c075879b4b054d6746c6b",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-07-08 07:18:30",
       "updated": "2026-07-08 07:18:30",
       "builds": [
@@ -563,6 +570,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/2490c4e7d6c4f854ef3b332a4d943c8ceccc6907254d8095308a86dabb48bb99",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-09-16 04:31:28",
       "updated": "2026-09-16 04:31:28",
       "builds": [
@@ -600,6 +608,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/6d9f486861d008f4073b958703d5293acb37b1afd4d837b95920ea0c18129a0d",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-09-14 06:38:22",
       "updated": "2026-09-14 06:38:22",
       "builds": [
@@ -630,6 +639,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/b669b744b9be0c816d2d0bc6075696a575ee849b617b875c91fe0b3dde776f96",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-08-04 07:10:08",
       "updated": "2026-08-04 07:10:08",
       "builds": [
@@ -681,6 +691,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/13820ceccbc2430d4309b5376c46408e95eebf0a2236158f2fbcf4b6b71a3987",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-08-05 02:17:32",
       "updated": "2026-08-05 02:17:32",
       "builds": [
@@ -732,6 +743,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/3d1d08cf26d4bc535582e1280292c8892c7bc0e393181ebf24d8b792f8bcf375",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-09-24 03:58:35",
       "updated": "2026-09-24 03:58:35",
       "builds": [
@@ -762,6 +774,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/285b830d8ea21ee986628ce27d961ada81035d99f5b8a3cef4608b00bcd4a071",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-08-04 08:44:23",
       "updated": "2026-08-04 08:44:23",
       "builds": [
@@ -792,6 +805,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/76a5fff17bd4941e02aadacdd4ba9c6b0bdd0e45100bf29b3802cff3cb7ce969",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-08-18 05:36:38",
       "updated": "2026-08-18 05:36:38",
       "builds": [
@@ -822,6 +836,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/b51ffba901237d146f258540c786b74ba88531abe24e17f5aa724b917f60d192",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-07-27 03:41:24",
       "updated": "2026-07-27 03:41:24",
       "builds": [
@@ -852,6 +867,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/ed3ea8da349eb1ac5e1b5baa97786326479cd2c8fa1b35d2d2ea60246c0ee227",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-05-15 10:55:55",
       "updated": "2026-05-15 10:55:55",
       "builds": [
@@ -896,6 +912,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/9e9a2e4c46ff4ed3122b4a447a9215bd07a1dcd35d07a84814c443f28a7c2e5c",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-05-15 07:44:50",
       "updated": "2026-05-15 07:44:50",
       "builds": [
@@ -945,8 +962,9 @@
       "installUrl": "https://loadly.io/jba-ebastk",
       "channels": [],
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/ce6af9c2de5483bc7e44b0326d357e7f812f3255b51294f232da773d1179cd48",
-      "protection": "Public",
-      "isProtected": false,
+      "protection": "Password",
+      "isProtected": true,
+      "downloadable": true,
       "created": "2026-10-06 04:50:37",
       "updated": "2026-10-06 04:50:37",
       "builds": [
@@ -984,6 +1002,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/6f00380f81c7226ee8abf53aeeed5713c3d8cf66a0fbf828d58fe2735b4560dc",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-08-18 03:12:45",
       "updated": "2026-08-18 03:12:45",
       "builds": [
@@ -1021,6 +1040,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/092a3bf568491f7b8225f17c505e8c1721444c00d0b10f36b7b79ab58b00c8b9",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-10-07 08:01:53",
       "updated": "2026-10-07 08:01:53",
       "builds": [
@@ -1121,6 +1141,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/393918ffd05324d12c21ae25b53063d57d362e35a1147b60e185bd43b9e259ba",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-10-07 08:55:02",
       "updated": "2026-10-07 08:55:02",
       "builds": [
@@ -1207,6 +1228,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/bc56cbfcd3387c49b9504e2f4c09bea67bc676c968a344726b54ffccd51d2a1f",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-07-15 06:54:05",
       "updated": "2026-07-15 06:54:05",
       "builds": [
@@ -1251,6 +1273,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/a0dac233e633a4627bd139524ae2255a2e3b7934df673bcf1382944d6da124d4",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-08-11 08:39:08",
       "updated": "2026-08-11 08:39:08",
       "builds": [
@@ -1281,6 +1304,7 @@
       "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/ec0d33c62975890a47bed0c42972138e047c5803332df32d9b51cc900541ba09",
       "protection": "Public",
       "isProtected": false,
+      "downloadable": true,
       "created": "2026-08-11 09:25:09",
       "updated": "2026-08-11 09:25:09",
       "builds": [
