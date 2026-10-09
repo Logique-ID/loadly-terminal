@@ -115,8 +115,8 @@ function parseSignedUrl(location) {
 /**
  * Direct download link for one downloadable build. Android asks /app/install
  * for its redirect target, since following it in the browser would need the
- * API key. Other protected apps get nothing: the API key skips their
- * invitation or question.
+ * API key. Other protected apps get nothing. Password apps fail here (sync has
+ * no passwords) and are logged; the worker serves them.
  */
 async function resolveDownload(apiKey, app, attempt = 1) {
   if (!app.downloadable || !app.buildKey) return null;

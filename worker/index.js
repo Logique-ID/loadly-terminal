@@ -11,10 +11,17 @@
  * Only builds that the published data/apps.json lists as the latest
  * downloadable Android build are served: public ones, plus password-protected
  * ones (INSTALL_TYPES.siteDownload). Without that check anyone could pass the
- * buildKey of an invitation- or question-protected app and the API key would
- * skip its protection.
+ * buildKey of an invitation- or question-protected app.
  *
- * Env: LOADLY_API_KEY (secret), APPS_URL (the published data/apps.json).
+ * The API key does not skip a build password: /app/install answers
+ * {"code":1050,"message":"Password is incorrect"} without one. Password apps
+ * use their entry in BUILD_PASSWORDS, else BUILD_PASSWORD. Without either, or
+ * with a wrong one, the click falls back to the app's loadly.io install page.
+ *
+ * Env: LOADLY_API_KEY (secret), BUILD_PASSWORD (secret, optional, install
+ * password shared by every app), BUILD_PASSWORDS (secret, optional, JSON
+ * object of appKey -> install password, overrides BUILD_PASSWORD), APPS_URL
+ * (the published data/apps.json).
  */
 
 const INSTALL_URL = 'https://api.loadly.io/apiv2/app/install';
@@ -46,7 +53,7 @@ export default {
     if (cached) return cached;
 
     try {
-      const signed = await resolve(env.LOADLY_API_KEY, buildKey);
+      const signed = await resolve(env.LOADLY_API_KEY, buildKey, buildPassword(env, app.appKey));
       const ttl = signed.expires ? signed.expires - Math.floor(Date.now() / 1000) - EXPIRY_MARGIN_S : 0;
       const response = redirect(signed.url, ttl > 0 ? ttl : 0);
       if (ttl > 0) ctx.waitUntil(cache.put(cacheKey, response.clone()));
@@ -72,8 +79,22 @@ async function findApp(appsUrl, buildKey) {
   );
 }
 
-async function resolve(apiKey, buildKey) {
+/** This app's install password, else the shared one, else undefined. */
+function buildPassword(env, appKey) {
+  if (env.BUILD_PASSWORDS && appKey) {
+    try {
+      const password = JSON.parse(env.BUILD_PASSWORDS)[appKey];
+      if (password) return password;
+    } catch {
+      console.error('BUILD_PASSWORDS is not valid JSON');
+    }
+  }
+  return env.BUILD_PASSWORD || undefined;
+}
+
+async function resolve(apiKey, buildKey, password) {
   const query = new URLSearchParams({ _api_key: apiKey, buildKey });
+  if (password) query.set('buildPassword', password);
   const response = await fetch(`${INSTALL_URL}?${query}`, { redirect: 'manual' });
   const location = response.headers.get('location');
   if (response.status < 300 || response.status >= 400 || !location) {

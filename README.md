@@ -150,18 +150,38 @@ page uses `data/downloads.json` as described above. Once the worker
 is live, the 30-minute cron only needs to pick up new builds and can run less
 often.
 
-Password-protected Android apps get a button too. The API key skips the
-password, so the Loadly password only stops people who have the loadly.io link
-without this site. Anyone who can open this site can download them. To turn this
-off, remove `siteDownload` from type 2 in `INSTALL_TYPES`. Invitation and
+Password-protected Android apps get a button too. The API key does not skip the
+password (`/app/install` returns `{"code":1050,"message":"Password is incorrect"}`
+without one), so the worker sends it as `buildPassword`. Two worker secrets
+hold the passwords:
+
+- `BUILD_PASSWORD`: one password used for every password app.
+- `BUILD_PASSWORDS` (optional): a JSON object of appKey → password for apps
+  whose password differs. An entry here wins over `BUILD_PASSWORD`.
+
+```bash
+cd worker
+read -rs PW   # type the password, it is not echoed
+printf '%s' "$PW" | npx wrangler secret put BUILD_PASSWORD
+printf '{"<appKey>":"%s"}' "$PW" | npx wrangler secret put BUILD_PASSWORDS
+unset PW
+```
+
+The appKey is in `data/apps.json`. A password app with no password, or a wrong
+one, sends the click to its loadly.io install page, where the user types the
+password. Anyone who can open this site can download password apps whose
+password the worker holds. To turn this off, remove `siteDownload` from type 2 in `INSTALL_TYPES`.
+`npm run sync` has no passwords, so `data/downloads.json` never has links for
+password apps. Invitation and
 question apps get no button. iOS builds would get an `itms-services://` link to Loadly's public
 plist. No iOS app exists yet, so that path is untested.
 
 ## Notes
 
 - Password / invitation / question-protected apps are listed with a 🔒 badge.
-  Passwords and answers are never fetched or published. Password apps still
-  get a download button (see above).
+  Passwords and answers are never fetched or published. Build passwords exist
+  only as the worker secrets `BUILD_PASSWORD` / `BUILD_PASSWORDS`. Password apps still get a
+  download button (see above).
 - `data/apps.json` contains only publicly shareable fields — no API key.
 - An entry in `CHANNELS` whose shortcut matches no app is reported by
   `npm run sync`, so a shortcut renamed in the dashboard cannot silently drop

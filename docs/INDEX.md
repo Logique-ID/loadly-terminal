@@ -88,7 +88,8 @@ empty = use `downloads.json`), `SESSION_KEY`.
 | --- | --- |
 | `fetch` handler | Validates the buildKey, checks it against `APPS_URL`, serves from edge cache or resolves. Falls back to `installUrl` when Loadly fails. |
 | `findApp` | Finds the buildKey among latest `downloadable` Android builds in the published JSON (cached `APPS_CACHE_S`). |
-| `resolve` | Calls Loadly `/app/install` with the secret key. |
+| `buildPassword` | App's install password from the `BUILD_PASSWORDS` secret (JSON, appKey → password), else the shared `BUILD_PASSWORD`. |
+| `resolve` | Calls Loadly `/app/install` with the secret key, plus `buildPassword` when one is stored. |
 | `redirect`, `notFound` | Response helpers. |
 | `EXPIRY_MARGIN_S` | Cached links are dropped this many seconds before they expire. |
 

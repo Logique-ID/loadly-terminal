@@ -35,11 +35,17 @@ Node 18+ (CI uses 22). Nothing to install.
   `worker/index.js` read `LOADLY_API_KEY`. Never add it to `assets/`,
   `data/`, or anything the workflow copies into `_site/`.
 - **Never fetch or publish passwords, invitation data or question answers.**
-  Protected apps (`isProtected`) get a lock badge. The API key bypasses their
-  protection, so only apps with `downloadable: true` get a download button:
-  public apps, plus password-protected Android apps (`siteDownload` in
-  `INSTALL_TYPES`). Invitation and question apps stay locked. The worker
-  enforces the same check against the published `data/apps.json`.
+  Protected apps (`isProtected`) get a lock badge. Only apps with
+  `downloadable: true` get a download button: public apps, plus
+  password-protected Android apps (`siteDownload` in `INSTALL_TYPES`).
+  Invitation and question apps stay locked. The worker enforces the same
+  check against the published `data/apps.json`.
+- **Build passwords live only in worker secrets:** `BUILD_PASSWORD` (shared
+  by every app) and `BUILD_PASSWORDS` (JSON, appKey → password, wins over the
+  shared one). The API key does not skip a password; `/app/install` returns
+  code 1050 without it. Never put passwords in `.env`, `data/`, `assets/` or
+  the repo. A password app with no password falls back to its loadly.io
+  install page.
 - **Grouping logic lives only in `scripts/sync.mjs`.** The page reads
   `groupKey` / `groupLabel` from the JSON. Don't reimplement it in
   `assets/app.js`. Sorting is the same: `compareApps` orders `apps.json` and
