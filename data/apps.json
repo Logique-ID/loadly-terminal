@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T05:14:08.035Z",
+  "generatedAt": "2026-10-16T09:59:01.466Z",
   "apps": [
     {
       "appKey": "cbfb03b9f6f6df89afd977a68ecce85b",
@@ -556,24 +556,31 @@
     },
     {
       "appKey": "ff7e49222b961c66a31155109666ec5a",
-      "buildKey": "2a88c93c14f2a5bce0b1a5e6a48b3dbe",
+      "buildKey": "55c93d2c90e9abde83393b637ad72045",
       "name": "Blue-T Demo",
-      "icon": "https://loadly.io/image/view/app_icons/ebcbfd94d35c101f6de92fc0ec9e9930/120",
+      "icon": "https://loadly.io/image/view/app_icons/d9f893db64c5284242a6d8dfe04b07cd/120",
       "platform": "Android",
-      "version": "3.0.23",
-      "buildVersion": "4",
+      "version": "3.1.0",
+      "buildVersion": "5",
       "identifier": "com.toyotatsusho.automotive.bluetdemo",
-      "fileSize": 89776529,
+      "fileSize": 89240763,
       "shortcut": "blue-t-demo",
       "installUrl": "https://loadly.io/blue-t-demo",
       "channels": [],
-      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/b669b744b9be0c816d2d0bc6075696a575ee849b617b875c91fe0b3dde776f96",
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/aee5aab40b05d8ee584ded8efcfac6e6254262e79656e20e6c5f85a24fcad87c",
       "protection": "Public",
       "isProtected": false,
       "downloadable": true,
-      "created": "2026-08-04 07:10:08",
-      "updated": "2026-08-04 07:10:08",
+      "created": "2026-10-16 08:16:26",
+      "updated": "2026-10-16 08:16:26",
       "builds": [
+        {
+          "buildKey": "55c93d2c90e9abde83393b637ad72045",
+          "version": "3.1.0",
+          "buildVersion": "5",
+          "fileSize": 89240763,
+          "created": "2026-10-16 08:16:26"
+        },
         {
           "buildKey": "2a88c93c14f2a5bce0b1a5e6a48b3dbe",
           "version": "3.0.23",
