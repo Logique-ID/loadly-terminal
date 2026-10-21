@@ -2,8 +2,9 @@
 /**
  * Fetches every app from Loadly and writes data/apps.json for the static site.
  *
- * The API key is read from .env (LOADLY_API_KEY) and never ends up in the
- * generated JSON, so the output is safe to publish on GitHub Pages.
+ * API keys are read from .env (LOADLY_API_KEY, plus LOADLY_API_KEYS for more
+ * accounts) and never end up in the generated JSON, so the output is safe to
+ * publish on GitHub Pages. Apps from every account are merged into one list.
  *
  *   node scripts/sync.mjs
  */
@@ -38,7 +39,53 @@ const OUTPUT = resolve(ROOT, 'data/apps.json');
 // instead of churning apps.json into a commit every run.
 const DOWNLOADS_OUTPUT = resolve(ROOT, 'data/downloads.json');
 
-async function loadApiKey() {
+// The account that LOADLY_API_KEY belongs to. Apps from it carry this name in
+// apps.json, and the worker maps it back to LOADLY_API_KEY.
+const DEFAULT_ACCOUNT = 'default';
+const ACCOUNT_NAME = /^[A-Za-z0-9_-]{1,32}$/;
+
+/**
+ * Every Loadly account to sync, LOADLY_API_KEY first. LOADLY_API_KEYS adds more
+ * as a JSON object of account name -> API key. The name is published in
+ * apps.json so the worker can pick the right key; the key never is.
+ */
+function parseAccounts(primary, extra) {
+  const accounts = [];
+  if (primary) accounts.push({ name: DEFAULT_ACCOUNT, apiKey: primary });
+
+  if (extra && extra.trim()) {
+    let parsed;
+    try {
+      parsed = JSON.parse(extra);
+    } catch {
+      throw new Error('LOADLY_API_KEYS is not valid JSON. Expected {"<account>": "<api key>"}.');
+    }
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+      throw new Error('LOADLY_API_KEYS must be a JSON object of account name -> API key.');
+    }
+    for (const [name, apiKey] of Object.entries(parsed)) {
+      if (!ACCOUNT_NAME.test(name) || name === DEFAULT_ACCOUNT) {
+        throw new Error(
+          `LOADLY_API_KEYS: "${name}" is not a valid account name ` +
+            `(letters, digits, - and _, not "${DEFAULT_ACCOUNT}").`
+        );
+      }
+      if (typeof apiKey !== 'string' || !apiKey.trim()) {
+        throw new Error(`LOADLY_API_KEYS: account "${name}" has no API key.`);
+      }
+      accounts.push({ name, apiKey: apiKey.trim() });
+    }
+  }
+
+  if (accounts.length === 0) {
+    throw new Error(
+      'LOADLY_API_KEY is not set. Copy .env.example to .env and fill in your key.'
+    );
+  }
+  return accounts;
+}
+
+async function loadAccounts() {
   const envFile = resolve(ROOT, '.env');
   if (existsSync(envFile)) {
     const contents = await readFile(envFile, 'utf8');
@@ -50,13 +97,7 @@ async function loadApiKey() {
     }
   }
 
-  const key = process.env.LOADLY_API_KEY;
-  if (!key) {
-    throw new Error(
-      'LOADLY_API_KEY is not set. Copy .env.example to .env and fill in your key.'
-    );
-  }
-  return key;
+  return parseAccounts(process.env.LOADLY_API_KEY, process.env.LOADLY_API_KEYS);
 }
 
 const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
@@ -370,39 +411,65 @@ function compareApps(a, b) {
 }
 
 async function main() {
-  const apiKey = await loadApiKey();
-
-  console.log('Fetching app list…');
-  const listed = await fetchAllPages(ENDPOINTS.listMy, { _api_key: apiKey });
-  console.log(`  ${listed.length} app(s) found`);
+  const accounts = await loadAccounts();
 
   const apps = [];
-  for (const summary of listed) {
-    const appKey = pick(summary, 'appKey');
-    const buildKey = pick(summary, 'buildKey');
-    const label = pick(summary, 'name') ?? appKey ?? buildKey;
-
-    let detail = summary;
-    let builds = [];
+  const seenApps = new Set();
+  let failedAccounts = 0;
+  for (const account of accounts) {
+    const { apiKey } = account;
+    console.log(`Fetching app list (${account.name})…`);
+    let listed;
     try {
-      detail = { ...summary, ...(await call(ENDPOINTS.view, { _api_key: apiKey, appKey })) };
-      builds = await fetchAllPages(ENDPOINTS.builds, { _api_key: apiKey, appKey, buildKey });
+      listed = await fetchAllPages(ENDPOINTS.listMy, { _api_key: apiKey });
     } catch (error) {
-      console.warn(`  ! ${label}: ${error.message}`);
+      // One bad key must not take the other accounts off the page.
+      failedAccounts += 1;
+      console.warn(`  ! account "${account.name}" skipped: ${error.message}`);
+      continue;
     }
+    console.log(`  ${listed.length} app(s) found`);
 
-    apps.push(
-      normalize(detail, {
-        builds: builds.map((build) => ({
-          buildKey: pick(build, 'buildKey'),
-          version: pick(build, 'version'),
-          buildVersion: pick(build, 'buildVersion'),
-          fileSize: Number(pick(build, 'fileSize') ?? 0),
-          created: pick(build, 'created'),
-        })),
-      })
-    );
-    console.log(`  ✓ ${label} (${builds.length} build(s))`);
+    for (const summary of listed) {
+      const appKey = pick(summary, 'appKey');
+      const buildKey = pick(summary, 'buildKey');
+      const label = pick(summary, 'name') ?? appKey ?? buildKey;
+
+      // An app shared with several accounts is listed once, under the first.
+      if (appKey && seenApps.has(appKey)) {
+        console.log(`  = ${label} (already listed by an earlier account)`);
+        continue;
+      }
+      if (appKey) seenApps.add(appKey);
+
+      let detail = summary;
+      let builds = [];
+      try {
+        detail = { ...summary, ...(await call(ENDPOINTS.view, { _api_key: apiKey, appKey })) };
+        builds = await fetchAllPages(ENDPOINTS.builds, { _api_key: apiKey, appKey, buildKey });
+      } catch (error) {
+        console.warn(`  ! ${label}: ${error.message}`);
+      }
+
+      apps.push(
+        normalize(detail, {
+          account: account.name,
+          builds: builds.map((build) => ({
+            buildKey: pick(build, 'buildKey'),
+            version: pick(build, 'version'),
+            buildVersion: pick(build, 'buildVersion'),
+            fileSize: Number(pick(build, 'fileSize') ?? 0),
+            created: pick(build, 'created'),
+          })),
+        })
+      );
+      console.log(`  ✓ ${label} (${builds.length} build(s))`);
+    }
+  }
+
+  // Publishing an empty list would wipe the page; keep the last good deploy.
+  if (failedAccounts === accounts.length) {
+    throw new Error('every Loadly account failed to list its apps');
   }
 
   // A channel entry is keyed by the app's own shortcut. Renaming that shortcut
@@ -429,9 +496,10 @@ async function main() {
   // Keyed by buildKey, so a link never lands on a card whose build changed.
   console.log('Resolving download links…');
   const downloads = {};
+  const apiKeys = new Map(accounts.map((account) => [account.name, account.apiKey]));
   for (const app of apps) {
     try {
-      const download = await resolveDownload(apiKey, app);
+      const download = await resolveDownload(apiKeys.get(app.account), app);
       if (download) downloads[app.buildKey] = download;
     } catch (error) {
       console.warn(`  ! ${app.name}: ${error.message}`);
@@ -444,7 +512,7 @@ async function main() {
   console.log(`Wrote ${DOWNLOADS_OUTPUT} (${Object.keys(downloads).length} link(s))`);
 }
 
-export { assignGroups, cleanName, compareApps, groupKeyFor, groupKeyOf, parseSignedUrl };
+export { assignGroups, cleanName, compareApps, groupKeyFor, groupKeyOf, parseAccounts, parseSignedUrl };
 
 // Only sync when run as a script; importing this file (tests) must not fetch.
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

@@ -52,12 +52,41 @@ publishes the site. Only `index.html`, `assets/` and `data/` are published —
 | `scripts/sync.mjs` | Calls the Loadly API and writes the JSON. |
 | `scripts/loadly.config.mjs` | Endpoints, field names, enums — edit here when the API changes. |
 | `scripts/grouping.test.mjs` | `npm test` — covers how apps are grouped into sections. |
+| `scripts/accounts.test.mjs` | `npm test` — covers how `LOADLY_API_KEYS` is parsed. |
 | `worker/` | Cloudflare Worker that turns a click into a fresh signed download link. |
 | `.env.example` | Template for `.env`. |
 
 Grouping rules live in `scripts/sync.mjs` only. The page reads the `groupKey`
 and `groupLabel` that the sync writes into `data/apps.json`, so the logic is
 not duplicated in the browser.
+
+## More than one Loadly account
+
+Apps from several Loadly accounts can share the page. `LOADLY_API_KEY` is the
+`default` account. Add the others to `LOADLY_API_KEYS` as a one-line JSON
+object of account name → API key:
+
+```bash
+LOADLY_API_KEYS={"client-a":"<api key>","client-b":"<api key>"}
+```
+
+The same value goes in three places: `.env`, the `LOADLY_API_KEYS` GitHub
+secret, and the worker (`npx wrangler secret put LOADLY_API_KEYS`).
+
+`npm run sync` lists every account and merges the apps into the same sections
+and sort order. The page does not show which account an app came from. Each
+app in `data/apps.json` has an `account` field holding the name (never the key),
+which the worker uses to pick the key for `/app/install`. Names are public, so
+use a plain label. If the worker has no key for an account, its download
+buttons open the loadly.io install page instead.
+
+An app visible to two accounts is listed once, under the first account that
+returns it. If one account's key fails (revoked, rate limited), the sync warns,
+skips that account and publishes the rest, so its apps drop off the page until
+the next good sync. The sync fails only when every account fails.
+
+Build passwords stay keyed by appKey in `BUILD_PASSWORDS`, which works for apps
+from any account.
 
 ## Channels
 

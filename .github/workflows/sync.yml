@@ -37,6 +37,7 @@ jobs:
       - name: Fetch apps from Loadly
         env:
           LOADLY_API_KEY: ${{ secrets.LOADLY_API_KEY }}
+          LOADLY_API_KEYS: ${{ secrets.LOADLY_API_KEYS }}
         run: npm run sync
 
       # Retried with a rebase: a run that starts while main has moved ahead

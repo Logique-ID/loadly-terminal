@@ -31,9 +31,16 @@ Node 18+ (CI uses 22). Nothing to install.
 
 ## Rules
 
-- **The API key never reaches the browser.** Only `scripts/sync.mjs` and
-  `worker/index.js` read `LOADLY_API_KEY`. Never add it to `assets/`,
-  `data/`, or anything the workflow copies into `_site/`.
+- **API keys never reach the browser.** Only `scripts/sync.mjs` and
+  `worker/index.js` read `LOADLY_API_KEY` / `LOADLY_API_KEYS`. Never add them
+  to `assets/`, `data/`, or anything the workflow copies into `_site/`.
+- **Several Loadly accounts merge into one list.** `LOADLY_API_KEY` is account
+  `default`; `LOADLY_API_KEYS` (JSON, account name → key) adds more. Each app
+  in `apps.json` carries its `account` name so the worker picks the right key.
+  An app listed by two accounts appears once, under the first. A failing
+  account is skipped with a warning; the sync fails only when every account
+  fails. Set `LOADLY_API_KEYS` in `.env`, the GitHub secret and the worker
+  secret, all with the same value.
 - **Never fetch or publish passwords, invitation data or question answers.**
   Protected apps (`isProtected`) get a lock badge. Only apps with
   `downloadable: true` get a download button: public apps, plus
@@ -69,10 +76,11 @@ Node 18+ (CI uses 22). Nothing to install.
 
 ## Testing
 
-Tests cover the pure functions only: grouping (`scripts/grouping.test.mjs`) and
-signed-URL parsing (`scripts/downloads.test.mjs`). When you change
-`groupKeyFor`, `cleanName`, `assignGroups`, `compareApps` or `parseSignedUrl`,
-add a case. UI changes have no tests; check them with `npm run serve` against a
+Tests cover the pure functions only: grouping (`scripts/grouping.test.mjs`),
+signed-URL parsing (`scripts/downloads.test.mjs`) and account parsing
+(`scripts/accounts.test.mjs`). When you change `groupKeyFor`, `cleanName`,
+`assignGroups`, `compareApps`, `parseSignedUrl` or `parseAccounts`, add a
+case. UI changes have no tests; check them with `npm run serve` against a
 real `data/apps.json`.
 
 ## Deploy
@@ -82,7 +90,8 @@ demand: `npm test` → `npm run sync` → commit `data/apps.json` (3 push retrie
 with rebase) → publish `index.html`, `assets/`, `data/`, `.nojekyll` to GitHub
 Pages. A failing test blocks the deploy.
 
-Worker: `cd worker && npx wrangler secret put LOADLY_API_KEY && npx wrangler deploy`,
+Worker: `cd worker && npx wrangler secret put LOADLY_API_KEY && npx wrangler deploy`
+(plus `npx wrangler secret put LOADLY_API_KEYS` for extra accounts),
 then set `DOWNLOAD_BASE` in `assets/app.js`. It points at
 `https://loadly-download.yama-lgq.workers.dev`. If `DOWNLOAD_BASE` is empty the
 page falls back to `data/downloads.json`, whose links expire about an hour

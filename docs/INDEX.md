@@ -5,7 +5,7 @@ Where things live. Search by function name; line numbers drift.
 ## Data flow
 
 ```
-Loadly API ──(scripts/sync.mjs, API key)──> data/apps.json       (committed)
+Loadly API ──(scripts/sync.mjs, one key per account)──> data/apps.json       (committed)
                                        └──> data/downloads.json  (gitignored, deployed)
 data/*.json ──(fetch)──> assets/app.js ──> index.html
 
@@ -26,10 +26,11 @@ browser ──> worker/index.js ──(checks published apps.json)──> Loadly
 | `scripts/loadly.config.mjs` | Every API constant and hand-maintained table. Edit here first when the API changes. |
 | `scripts/grouping.test.mjs` | Tests for section grouping and labels. |
 | `scripts/downloads.test.mjs` | Tests for `parseSignedUrl`. |
+| `scripts/accounts.test.mjs` | Tests for `parseAccounts`. |
 | `worker/index.js` | Cloudflare Worker: `GET /<buildKey>` → 302 to a fresh signed APK URL. |
 | `worker/wrangler.toml` | Worker config. `APPS_URL` points at the published `data/apps.json`. |
 | `.github/workflows/sync.yml` | Test, sync, commit and Pages deploy. Every 30 min, on push to `main`, manual. |
-| `.env.example` | Template for `.env` (`LOADLY_API_KEY`). |
+| `.env.example` | Template for `.env` (`LOADLY_API_KEY`, optional `LOADLY_API_KEYS`). |
 
 ## scripts/loadly.config.mjs
 
@@ -49,7 +50,8 @@ browser ──> worker/index.js ──(checks published apps.json)──> Loadly
 
 | Function | Purpose |
 | --- | --- |
-| `loadApiKey` | Reads `LOADLY_API_KEY` from `.env`, then the environment. |
+| `parseAccounts` | `LOADLY_API_KEY` (account `default`) + `LOADLY_API_KEYS` JSON → `[{ name, apiKey }]`. Exported. |
+| `loadAccounts` | Reads `.env`, then the environment, and calls `parseAccounts`. |
 | `call` | One API request with retry and delay. |
 | `fetchAllPages` | Pages through a list endpoint up to `MAX_PAGES`. |
 | `normalize` | Raw API object → the app shape written to `apps.json`. Sets `downloadable` from `INSTALL_TYPES`. |
@@ -60,7 +62,7 @@ browser ──> worker/index.js ──(checks published apps.json)──> Loadly
 | `groupKeyOf` | Picks identifier key or `name:` key based on `GROUP_MIN_SEGMENTS`. Exported. |
 | `assignGroups` | Writes `groupKey` / `groupLabel` onto each app; warns on generic identifiers. Exported. |
 | `compareApps` | Sort by group label, then identifier segments, platform, name. The page keeps this order. Exported. |
-| `main` | Lists apps, fetches detail and builds per app, checks `CHANNELS`, groups, sorts, writes both JSON files. |
+| `main` | Per account: lists apps, fetches detail and builds, tags each with `account`. Skips an account whose list fails (fails only if all do), dedupes by appKey, checks `CHANNELS`, groups, sorts, writes both JSON files. |
 
 ## assets/app.js
 
@@ -88,8 +90,9 @@ empty = use `downloads.json`), `SESSION_KEY`.
 | --- | --- |
 | `fetch` handler | Validates the buildKey, checks it against `APPS_URL`, serves from edge cache or resolves. Falls back to `installUrl` when Loadly fails. |
 | `findApp` | Finds the buildKey among latest `downloadable` Android builds in the published JSON (cached `APPS_CACHE_S`). |
+| `apiKeyFor` | API key for the app's `account`: `LOADLY_API_KEY` for `default`, else `LOADLY_API_KEYS`. |
 | `buildPassword` | App's install password from the `BUILD_PASSWORDS` secret (JSON, appKey → password), else the shared `BUILD_PASSWORD`. |
-| `resolve` | Calls Loadly `/app/install` with the secret key, plus `buildPassword` when one is stored. |
+| `resolve` | Calls Loadly `/app/install` with the account's key, plus `buildPassword` when one is stored. |
 | `redirect`, `notFound` | Response helpers. |
 | `EXPIRY_MARGIN_S` | Cached links are dropped this many seconds before they expire. |
 
@@ -103,4 +106,5 @@ empty = use `downloads.json`), `SESSION_KEY`.
 | Two apps should or shouldn't share a section | `ENV_SUFFIXES` / `GROUP_MIN_SEGMENTS`, plus a test in `grouping.test.mjs` |
 | Add channel links to an app | `CHANNELS`, then `npm run sync` |
 | Change sort order | `compareApps` in `sync.mjs`, then `npm run sync` |
+| Add another Loadly account | `LOADLY_API_KEYS` in `.env`, the GitHub secret and the worker secret |
 | Download button behavior | `downloadButton` in `app.js`; worker access rules in `findApp` |

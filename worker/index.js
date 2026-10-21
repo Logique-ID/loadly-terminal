@@ -18,8 +18,14 @@
  * use their entry in BUILD_PASSWORDS, else BUILD_PASSWORD. Without either, or
  * with a wrong one, the click falls back to the app's loadly.io install page.
  *
- * Env: LOADLY_API_KEY (secret), BUILD_PASSWORD (secret, optional, install
- * password shared by every app), BUILD_PASSWORDS (secret, optional, JSON
+ * Apps can come from more than one Loadly account. Each app in apps.json names
+ * its `account`; "default" (or no account) uses LOADLY_API_KEY, any other name
+ * its entry in LOADLY_API_KEYS. An account with no key falls back to the
+ * install page.
+ *
+ * Env: LOADLY_API_KEY (secret), LOADLY_API_KEYS (secret, optional, JSON object
+ * of account name -> API key, same value as the sync's), BUILD_PASSWORD
+ * (secret, optional, install password shared by every app), BUILD_PASSWORDS (secret, optional, JSON
  * object of appKey -> install password, overrides BUILD_PASSWORD), APPS_URL
  * (the published data/apps.json).
  */
@@ -53,7 +59,9 @@ export default {
     if (cached) return cached;
 
     try {
-      const signed = await resolve(env.LOADLY_API_KEY, buildKey, buildPassword(env, app.appKey));
+      const apiKey = apiKeyFor(env, app.account);
+      if (!apiKey) throw new Error(`no API key for account "${app.account}"`);
+      const signed = await resolve(apiKey, buildKey, buildPassword(env, app.appKey));
       const ttl = signed.expires ? signed.expires - Math.floor(Date.now() / 1000) - EXPIRY_MARGIN_S : 0;
       const response = redirect(signed.url, ttl > 0 ? ttl : 0);
       if (ttl > 0) ctx.waitUntil(cache.put(cacheKey, response.clone()));
@@ -77,6 +85,17 @@ async function findApp(appsUrl, buildKey) {
       (app) => app.buildKey === buildKey && app.platform === 'Android' && (app.downloadable ?? !app.isProtected),
     ) ?? null
   );
+}
+
+/** API key of the account that owns the app, or undefined. */
+function apiKeyFor(env, account) {
+  if (!account || account === 'default') return env.LOADLY_API_KEY;
+  try {
+    return JSON.parse(env.LOADLY_API_KEYS || '{}')[account] || undefined;
+  } catch {
+    console.error('LOADLY_API_KEYS is not valid JSON');
+    return undefined;
+  }
 }
 
 /** This app's install password, else the shared one, else undefined. */
