@@ -29,8 +29,10 @@ browser ──> worker/index.js ──(checks published apps.json)──> Loadly
 | `scripts/accounts.test.mjs` | Tests for `parseAccounts`. |
 | `worker/index.js` | Cloudflare Worker: `GET /<buildKey>` → 302 to a fresh signed APK URL. |
 | `worker/wrangler.toml` | Worker config. `APPS_URL` points at the published `data/apps.json`. |
-| `.github/workflows/sync.yml` | Test, sync, commit and Pages deploy. Every 30 min, on push to `main`, manual. |
+| `.github/workflows/sync.yml` | Test, sync, commit and Pages deploy. Every 30 min, on push to `main`, manual. Adds `?v=<sha>` to asset URLs in the published `index.html`. |
 | `.env.example` | Template for `.env` (`LOADLY_API_KEY`, optional `LOADLY_API_KEYS`). |
+| `package.json` | `test`, `sync`, `serve` scripts. No dependencies. |
+| `.nojekyll` | Stops GitHub Pages from running Jekyll on the site. |
 
 ## scripts/loadly.config.mjs
 
@@ -51,9 +53,10 @@ browser ──> worker/index.js ──(checks published apps.json)──> Loadly
 | Function | Purpose |
 | --- | --- |
 | `parseAccounts` | `LOADLY_API_KEY` (account `default`) + `LOADLY_API_KEYS` JSON → `[{ name, apiKey }]`. Exported. |
-| `loadAccounts` | Reads `.env`, then the environment, and calls `parseAccounts`. |
-| `call` | One API request with retry and delay. |
-| `fetchAllPages` | Pages through a list endpoint up to `MAX_PAGES`. |
+| `loadAccounts` | Copies `.env` values into unset environment variables (the environment wins), then calls `parseAccounts`. |
+| `call` | One POST with delay. Retries network/HTTP failures up to `MAX_RETRIES`; a Loadly error code throws at once. |
+| `pick`, `toArray`, `iconUrl` | Read a field through `FIELDS`; unwrap list responses; turn an icon hash into a URL. |
+| `fetchAllPages` | Pages through a list endpoint. Stops on an empty or short page, a page of only repeated rows (`DEDUPE_PAGES`), or `MAX_PAGES`. |
 | `normalize` | Raw API object → the app shape written to `apps.json`. Sets `downloadable` from `INSTALL_TYPES`. |
 | `resolveDownload` | Android: calls `/app/install`, keeps the 302 target. iOS: `itms-services://` plist link (untested). Skips apps that aren't `downloadable`. |
 | `parseSignedUrl` | Validates an https URL and reads its `Expires` param into `expiresAt`. Exported. |
@@ -67,18 +70,21 @@ browser ──> worker/index.js ──(checks published apps.json)──> Loadly
 ## assets/app.js
 
 Constants at the top: `DATA_URL`, `DOWNLOADS_URL`, `DOWNLOAD_BASE` (worker URL,
-empty = use `downloads.json`), `SESSION_KEY`.
+empty = use `downloads.json`), `SESSION_KEY` (`loadly.session.v1`).
 
 | Function | Purpose |
 | --- | --- |
-| `readSession`, `writeSession`, `restoreSession` | Remember search and platform filter in `localStorage`. |
+| `readSession`, `writeSession` | Remember search and platform filter in `localStorage`, inside try/catch. |
+| `restoreSession` | Restores the saved filters on load. `?q=` / `?platform=` in the URL win over the saved ones. |
+| `el` | Tiny DOM builder. Hyphenated props (`aria-*`, `data-*`) become attributes. |
+| `formatSize`, `formatDate`, `formatRelative`, `formatDelta`, `plural` | Display formatting for cards and history. |
 | `groupKeyOf`, `groupLabelOf` | Read the sync's grouping fields, with a fallback for old JSON. |
 | `copyButton` | Copy-link button. |
 | `openButton` | "Open link" button, opens an install or channel URL in a new tab. |
 | `downloadButton` | Worker link or signed link. `null` for apps that aren't `downloadable` and once the signed link expires. |
 | `qrToggle` | QR code toggle. Hidden on cards that show channels. |
-| `buildHistory` | Version history list from `app.builds`. |
-| `buildCard` | One app card. |
+| `buildHistory` | Version history timeline from `app.builds`, with size change per build. Only shown with 2+ builds. |
+| `buildCard` | One app card: badges, meta, channels or install buttons, history. |
 | `render` | Filters by search and platform, groups into sections, draws the list. |
 | `syncUrl` | Writes search (`q`) and `platform` into the URL so a filtered view can be shared. |
 | `buildFilters` | Platform filter buttons. |
@@ -88,13 +94,14 @@ empty = use `downloads.json`), `SESSION_KEY`.
 
 | Name | Purpose |
 | --- | --- |
-| `fetch` handler | Validates the buildKey, checks it against `APPS_URL`, serves from edge cache or resolves. Falls back to `installUrl` when Loadly fails. |
+| `fetch` handler | `GET`/`HEAD` only. Validates the buildKey, checks it against `APPS_URL`, serves from edge cache or resolves. Falls back to `installUrl` when Loadly fails or the account has no key. |
 | `findApp` | Finds the buildKey among latest `downloadable` Android builds in the published JSON (cached `APPS_CACHE_S`). |
 | `apiKeyFor` | API key for the app's `account`: `LOADLY_API_KEY` for `default`, else `LOADLY_API_KEYS`. |
 | `buildPassword` | App's install password from the `BUILD_PASSWORDS` secret (JSON, appKey → password), else the shared `BUILD_PASSWORD`. |
 | `resolve` | Calls Loadly `/app/install` with the account's key, plus `buildPassword` when one is stored. |
 | `redirect`, `notFound` | Response helpers. |
 | `EXPIRY_MARGIN_S` | Cached links are dropped this many seconds before they expire. |
+| `APPS_CACHE_S` | How long the worker caches the published `apps.json`. |
 
 ## Common tasks
 
@@ -108,3 +115,5 @@ empty = use `downloads.json`), `SESSION_KEY`.
 | Change sort order | `compareApps` in `sync.mjs`, then `npm run sync` |
 | Add another Loadly account | `LOADLY_API_KEYS` in `.env`, the GitHub secret and the worker secret |
 | Download button behavior | `downloadButton` in `app.js`; worker access rules in `findApp` |
+| Set a build password | Worker secret `BUILD_PASSWORD` or `BUILD_PASSWORDS` (README, "Download buttons") |
+| Stop serving password apps | Remove `siteDownload` from type 2 in `INSTALL_TYPES`, then `npm run sync` |

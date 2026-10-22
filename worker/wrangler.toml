@@ -1,6 +1,7 @@
 # Deploy: cd worker && npx wrangler deploy
 # Key:    npx wrangler secret put LOADLY_API_KEY
 #         npx wrangler secret put LOADLY_API_KEYS   (optional, more accounts)
+# Passwords (optional): BUILD_PASSWORD (shared), BUILD_PASSWORDS (JSON, appKey -> password)
 name = "loadly-download"
 main = "index.js"
 compatibility_date = "2026-10-01"

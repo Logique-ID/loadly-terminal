@@ -27,7 +27,9 @@ npm run sync      # needs LOADLY_API_KEY in .env, hits the live Loadly API
 npm run serve     # python3 http.server on :8080 (file:// can't fetch the JSON)
 ```
 
-Node 18+ (CI uses 22). Nothing to install.
+Sync needs Node 18+; `npm test` needs Node 21+ (glob in `node --test`). CI
+uses 22. Nothing to install. Real environment variables win over `.env`;
+`.env` only fills unset ones.
 
 ## Rules
 
@@ -56,8 +58,7 @@ Node 18+ (CI uses 22). Nothing to install.
 - **Grouping logic lives only in `scripts/sync.mjs`.** The page reads
   `groupKey` / `groupLabel` from the JSON. Don't reimplement it in
   `assets/app.js`. Sorting is the same: `compareApps` orders `apps.json` and
-  the page keeps that order. (The `compareApps` doc comment says app.js has a
-  mirror; it no longer does.)
+  the page keeps that order.
 - **API shape changes go in `scripts/loadly.config.mjs`** (`FIELDS`,
   `ENDPOINTS`, `PLATFORMS`, `INSTALL_TYPES`, `REQUEST_DELAY_MS`). Adding a new
   card field = map it in `FIELDS` + `normalize()`, then render it in
@@ -80,7 +81,7 @@ Tests cover the pure functions only: grouping (`scripts/grouping.test.mjs`),
 signed-URL parsing (`scripts/downloads.test.mjs`) and account parsing
 (`scripts/accounts.test.mjs`). When you change `groupKeyFor`, `cleanName`,
 `assignGroups`, `compareApps`, `parseSignedUrl` or `parseAccounts`, add a
-case. UI changes have no tests; check them with `npm run serve` against a
+case (`groupKeyOf` too). `worker/index.js` has no tests. UI changes have no tests; check them with `npm run serve` against a
 real `data/apps.json`.
 
 ## Deploy
@@ -88,11 +89,18 @@ real `data/apps.json`.
 `.github/workflows/sync.yml` runs every 30 min, on push to `main`, and on
 demand: `npm test` → `npm run sync` → commit `data/apps.json` (3 push retries
 with rebase) → publish `index.html`, `assets/`, `data/`, `.nojekyll` to GitHub
-Pages. A failing test blocks the deploy.
+Pages. A failing test blocks the deploy. The published `index.html` gets
+`?v=<short sha>` on its CSS/JS URLs for cache busting; the repo copy stays
+unversioned. A newer run cancels one in progress (`concurrency: pages`). The
+repo is public and the site is live at
+`https://logique-id.github.io/loadly-terminal/`, so everything in
+`data/apps.json` is public.
 
 Worker: `cd worker && npx wrangler secret put LOADLY_API_KEY && npx wrangler deploy`
-(plus `npx wrangler secret put LOADLY_API_KEYS` for extra accounts),
-then set `DOWNLOAD_BASE` in `assets/app.js`. It points at
+(plus `npx wrangler secret put LOADLY_API_KEYS` for extra accounts, and
+`BUILD_PASSWORD` / `BUILD_PASSWORDS` for password apps), then set
+`DOWNLOAD_BASE` in `assets/app.js`. `APPS_URL` in `worker/wrangler.toml`
+points at the published `data/apps.json`, cached 5 min (`APPS_CACHE_S`). It points at
 `https://loadly-download.yama-lgq.workers.dev`. If `DOWNLOAD_BASE` is empty the
 page falls back to `data/downloads.json`, whose links expire about an hour
 after each sync.

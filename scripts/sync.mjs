@@ -312,11 +312,6 @@ function cleanName(name) {
 }
 
 /**
- * Tags every app with the section it belongs to. The label comes from
- * GROUP_LABELS when the key is listed there, otherwise from the name of the
- * group's base app — the one with the shortest identifier.
- */
-/**
  * Group key for one app. A stripped identifier is used only when it is specific
  * enough (GROUP_MIN_SEGMENTS); a vendor-only identifier like `id.logique.dev`
  * strips down to `id.logique`, which any later app under the same vendor would
@@ -332,6 +327,11 @@ function groupKeyOf(app) {
   return { key: `name:${name}`, generic: true, stripped };
 }
 
+/**
+ * Tags every app with the section it belongs to. The label comes from
+ * GROUP_LABELS when the key is listed there, otherwise from the name of the
+ * group's base app — the one with the shortest identifier.
+ */
 function assignGroups(list) {
   const members = new Map();
   const generic = new Map();
@@ -385,8 +385,8 @@ function assignGroups(list) {
 /**
  * Orders apps by group label first, so each section's apps stay contiguous,
  * then by bundle identifier, comparing dot-separated segments so a base id
- * always precedes its variants (id.jbabidding, .dev, .stg). Mirrors the
- * comparator in assets/app.js.
+ * always precedes its variants (id.jbabidding, .dev, .stg). assets/app.js
+ * keeps this order and does not sort again.
  */
 function compareApps(a, b) {
   const byGroup = String(a.groupLabel ?? '').localeCompare(String(b.groupLabel ?? ''));

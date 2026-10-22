@@ -14,33 +14,41 @@ the browser.
 cp .env.example .env     # then paste your Loadly API key
 npm run sync             # writes data/apps.json
 npm run serve            # http://localhost:8080
-npm test                 # checks the grouping rules
+npm test                 # grouping, signed-URL and account parsing, no network
 ```
 
-`npm run sync` needs Node 18+ (uses built-in `fetch`). It reads
-`LOADLY_API_KEY` from `.env`, falling back to the environment.
+`npm run sync` needs Node 18+ (uses built-in `fetch`). `npm test` passes a
+glob to `node --test`, which needs Node 21+; CI uses Node 22. The sync reads
+`LOADLY_API_KEY` and `LOADLY_API_KEYS` from the environment first; `.env` only
+fills in variables the environment leaves unset.
 
 Open the site through a local server, not `file://` — the page fetches
 `data/apps.json` and browsers block that on the file protocol.
 
 ## Deploying to GitHub Pages
 
-> **The repo must be public, or the org must be on GitHub Team or Enterprise.**
-> GitHub Pages is not available for private repositories on a Free plan, and
-> `Logique-ID` is currently on Free with this repo private — the deploy step
-> will fail until one of those changes. Making it public also publishes
-> `data/apps.json`: every app name, bundle identifier and install URL. The
-> install URLs are already public on loadly.io, but the inventory of which
-> clients and environments exist would not be. Decide that deliberately.
+> **The repo is public, so `data/apps.json` is public too**: every app name,
+> bundle identifier, install URL and account name. The install URLs are
+> already public on loadly.io; the inventory of which clients and environments
+> exist is not. GitHub Pages does not serve private repos on the Free plan,
+> so making the repo private means moving `Logique-ID` to Team or Enterprise
+> first, or the deploy step fails.
 
 1. Push this repo to GitHub.
-2. Settings → Secrets and variables → Actions → add `LOADLY_API_KEY`.
+2. Settings → Secrets and variables → Actions → add `LOADLY_API_KEY` (and
+   `LOADLY_API_KEYS` for extra accounts, see below).
 3. Settings → Pages → Source: **GitHub Actions**.
 
-[`.github/workflows/sync.yml`](.github/workflows/sync.yml) then runs hourly (and
-on demand via *Run workflow*), re-syncs `data/apps.json`, commits any change and
-publishes the site. Only `index.html`, `assets/` and `data/` are published —
-`scripts/` and the workflow stay out of the deployed site.
+[`.github/workflows/sync.yml`](.github/workflows/sync.yml) then runs every 30
+minutes, on every push to `main` and on demand via *Run workflow*. It runs
+`npm test` (a failure stops the deploy), re-syncs `data/apps.json`, commits any
+change and publishes the site. Only `index.html`, `assets/`, `data/` and
+`.nojekyll` are published; `scripts/` and the workflow stay out of the deployed
+site. The published `index.html` gets `?v=<commit>` on its CSS and JS URLs so
+browsers fetch the new files after each deploy. A newer run cancels an older
+one still in progress.
+
+The site is live at <https://logique-id.github.io/loadly-terminal/>.
 
 ## Layout
 
@@ -51,9 +59,11 @@ publishes the site. Only `index.html`, `assets/` and `data/` are published —
 | `data/downloads.json` | Generated signed download links. Gitignored, deployed. |
 | `scripts/sync.mjs` | Calls the Loadly API and writes the JSON. |
 | `scripts/loadly.config.mjs` | Endpoints, field names, enums — edit here when the API changes. |
-| `scripts/grouping.test.mjs` | `npm test` — covers how apps are grouped into sections. |
-| `scripts/accounts.test.mjs` | `npm test` — covers how `LOADLY_API_KEYS` is parsed. |
+| `scripts/grouping.test.mjs` | `npm test`: how apps are grouped into sections and sorted. |
+| `scripts/downloads.test.mjs` | `npm test`: how signed download URLs are parsed. |
+| `scripts/accounts.test.mjs` | `npm test`: how `LOADLY_API_KEYS` is parsed. |
 | `worker/` | Cloudflare Worker that turns a click into a fresh signed download link. |
+| `docs/INDEX.md` | File and function map. |
 | `.env.example` | Template for `.env`. |
 
 Grouping rules live in `scripts/sync.mjs` only. The page reads the `groupKey`
@@ -170,14 +180,20 @@ expire, which keeps clicks well under Loadly's hourly rate limit.
 ```bash
 cd worker
 npx wrangler secret put LOADLY_API_KEY
+npx wrangler secret put LOADLY_API_KEYS   # only with extra accounts
 npx wrangler deploy
 ```
 
+The worker answers `GET` and `HEAD` only, rejects buildKeys that aren't
+1–64 letters, digits, `-` or `_`, and caches the published `data/apps.json` for
+5 minutes (`APPS_CACHE_S`). Right after a deploy, a new build's button can
+return 404 until that cache, and GitHub Pages' own cache, refresh.
+
 Then set `DOWNLOAD_BASE` in `assets/app.js` to the worker URL. It is live at
 `https://loadly-download.yama-lgq.workers.dev`. If `DOWNLOAD_BASE` is empty the
-page uses `data/downloads.json` as described above. Once the worker
-is live, the 30-minute cron only needs to pick up new builds and can run less
-often.
+page uses `data/downloads.json` as described above. With the worker live,
+Android buttons no longer depend on `data/downloads.json`, so the 30-minute
+cron only needs to pick up new builds and could run less often.
 
 Password-protected Android apps get a button too. The API key does not skip the
 password (`/app/install` returns `{"code":1050,"message":"Password is incorrect"}`
