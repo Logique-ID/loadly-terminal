@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T08:05:27.759Z",
+  "generatedAt": "2026-10-27T14:43:57.980Z",
   "apps": [
     {
       "appKey": "cbfb03b9f6f6df89afd977a68ecce85b",
@@ -523,74 +523,35 @@
       "groupLabel": "Auction Express Inspection"
     },
     {
-      "appKey": "6640fe4e1515b663b5491f9515369bc8",
-      "buildKey": "7a61ce4cc50a6e2698f734c155f2cd0f",
+      "appKey": "388cae2e478be9683ada57859209f41b",
+      "buildKey": "93af7c3e8e4687d204a40c9224233262",
       "name": "Bike Inspection System",
-      "icon": "https://loadly.io/image/view/app_icons/1c1546f5a034ad6a1ea7ea094aec0627/120",
+      "icon": "https://loadly.io/image/view/app_icons/c5d8f4eaf92e31763245262f79605a49/120",
       "platform": "Android",
-      "version": "1.7.7-dev",
-      "buildVersion": "2",
-      "identifier": "com.upliftlab.bikeinspectionsystemdev",
-      "fileSize": 13260399,
-      "shortcut": "jba-bike-ins-dev",
-      "installUrl": "https://loadly.io/jba-bike-ins-dev",
-      "channels": [],
-      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/2490c4e7d6c4f854ef3b332a4d943c8ceccc6907254d8095308a86dabb48bb99",
-      "protection": "Public",
-      "isProtected": false,
-      "downloadable": true,
-      "created": "2026-09-16 04:31:28",
-      "updated": "2026-09-16 04:31:28",
-      "account": "default",
-      "builds": [
-        {
-          "buildKey": "7a61ce4cc50a6e2698f734c155f2cd0f",
-          "version": "1.7.7-dev",
-          "buildVersion": "2",
-          "fileSize": 13260399,
-          "created": "2026-09-16 04:31:28"
-        },
-        {
-          "buildKey": "96c86d6e1d1c439bf5603901c13e89f0",
-          "version": "1.7.4-dev",
-          "buildVersion": "1",
-          "fileSize": 13259979,
-          "created": "2026-09-14 06:34:30"
-        }
-      ],
-      "groupKey": "com.upliftlab.bikeinspectionsystem",
-      "groupLabel": "Bike Inspection System"
-    },
-    {
-      "appKey": "9d2d9959114546a61fafa49069644704",
-      "buildKey": "734d65d6a8cd0aeedcb936f4cdc87965",
-      "name": "Bike Inspection System",
-      "icon": "https://loadly.io/image/view/app_icons/573f3f0aaba4f8d44a9b87222b3e62f1/120",
-      "platform": "Android",
-      "version": "1.7.4-staging",
+      "version": "1.9.0-prod",
       "buildVersion": "1",
-      "identifier": "com.upliftlab.bikeinspectionsystemstaging",
-      "fileSize": 13259486,
-      "shortcut": "jba-bike-ins-stg",
-      "installUrl": "https://loadly.io/jba-bike-ins-stg",
+      "identifier": "id.jba.bike.inspection",
+      "fileSize": 10487484,
+      "shortcut": "jba-bike-inspect",
+      "installUrl": "https://loadly.io/jba-bike-inspect",
       "channels": [],
-      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/6d9f486861d008f4073b958703d5293acb37b1afd4d837b95920ea0c18129a0d",
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/d204b0663931991d3e178c41ca79b3de29c8ba038897df04545fd8e4c0e83e54",
       "protection": "Public",
       "isProtected": false,
       "downloadable": true,
-      "created": "2026-09-14 06:38:22",
-      "updated": "2026-09-14 06:38:22",
+      "created": "2026-10-27 08:31:01",
+      "updated": "2026-10-27 08:31:01",
       "account": "default",
       "builds": [
         {
-          "buildKey": "734d65d6a8cd0aeedcb936f4cdc87965",
-          "version": "1.7.4-staging",
+          "buildKey": "93af7c3e8e4687d204a40c9224233262",
+          "version": "1.9.0-prod",
           "buildVersion": "1",
-          "fileSize": 13259486,
-          "created": "2026-09-14 06:38:22"
+          "fileSize": 10487484,
+          "created": "2026-10-27 08:31:01"
         }
       ],
-      "groupKey": "com.upliftlab.bikeinspectionsystem",
+      "groupKey": "id.jba.bike.inspection",
       "groupLabel": "Bike Inspection System"
     },
     {
@@ -1451,6 +1412,38 @@
       ],
       "groupKey": "id.logique.jbabiddingrevamp",
       "groupLabel": "JBA Bidding Revamp"
+    },
+    {
+      "appKey": "dd39d86ccb93cac0395acc3467b48787",
+      "buildKey": "fa805c3e2692e0f180dbfc9e38b9745f",
+      "name": "JBA Car Inspection System",
+      "icon": "https://loadly.io/image/view/app_icons/5ea421e23c5a8702f085f26d490aebc2/120",
+      "platform": "Android",
+      "version": "1.8.0",
+      "buildVersion": "1",
+      "identifier": "id.jba.car.inspection",
+      "fileSize": 20850303,
+      "shortcut": "jba-car-inspect",
+      "installUrl": "https://loadly.io/jba-car-inspect",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/79d5093decc462ee89018b825d3e701d64e4f408f5fd813748998c8f18f34c0e",
+      "protection": "Public",
+      "isProtected": false,
+      "downloadable": true,
+      "created": "2026-10-27 13:57:01",
+      "updated": "2026-10-27 13:57:01",
+      "account": "default",
+      "builds": [
+        {
+          "buildKey": "fa805c3e2692e0f180dbfc9e38b9745f",
+          "version": "1.8.0",
+          "buildVersion": "1",
+          "fileSize": 20850303,
+          "created": "2026-10-27 13:57:01"
+        }
+      ],
+      "groupKey": "id.jba.car.inspection",
+      "groupLabel": "JBA Car Inspection System"
     },
     {
       "appKey": "71018f5dcebacd17442bbf8598adf170",
