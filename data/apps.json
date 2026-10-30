@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T09:11:28.134Z",
+  "generatedAt": "2026-10-30T16:05:03.632Z",
   "apps": [
     {
       "appKey": "cbfb03b9f6f6df89afd977a68ecce85b",
@@ -478,25 +478,32 @@
     },
     {
       "appKey": "0481c62738f031504f971760c074f0ae",
-      "buildKey": "82c1643a56f5b4498b05a942b4578a58",
+      "buildKey": "4564e034caefdd8e5aea5c92c8fbaeda",
       "name": "[STG] Auction Express Inspection",
-      "icon": "https://loadly.io/image/view/app_icons/923621e9882111fe718be126f1cbf8d1/120",
+      "icon": "https://loadly.io/image/view/app_icons/c0c0f07aa4a8a165a5d9387cf349c9fc/120",
       "platform": "Android",
       "version": "1.6.6",
-      "buildVersion": "3",
+      "buildVersion": "4",
       "identifier": "id.logique.auctionexpress.staging",
-      "fileSize": 19590954,
+      "fileSize": 19590963,
       "shortcut": "ae-inspect-stg",
       "installUrl": "https://loadly.io/ae-inspect-stg",
       "channels": [],
-      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/fe200640121d982556c4b00a87aafb4395364744fe01ab3e467597be981e3391",
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/aed458398c4936fd42108ffa1e5c5b3f0fada5adde1b614e400a9613b316a2cd",
       "protection": "Public",
       "isProtected": false,
       "downloadable": true,
-      "created": "2026-10-15 08:05:55",
-      "updated": "2026-10-15 08:05:55",
+      "created": "2026-10-30 09:14:57",
+      "updated": "2026-10-30 09:14:57",
       "account": "default",
       "builds": [
+        {
+          "buildKey": "4564e034caefdd8e5aea5c92c8fbaeda",
+          "version": "1.6.6",
+          "buildVersion": "4",
+          "fileSize": 19590963,
+          "created": "2026-10-30 09:14:57"
+        },
         {
           "buildKey": "82c1643a56f5b4498b05a942b4578a58",
           "version": "1.6.6",
