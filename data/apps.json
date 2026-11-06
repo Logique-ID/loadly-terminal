@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T01:52:38.943Z",
+  "generatedAt": "2026-11-06T08:40:34.256Z",
   "apps": [
     {
       "appKey": "cbfb03b9f6f6df89afd977a68ecce85b",
@@ -443,6 +443,38 @@
       ],
       "groupKey": "id.logique.assistforward",
       "groupLabel": "Assist Forward"
+    },
+    {
+      "appKey": "04054db2964ec782855f3d0f3f81adaa",
+      "buildKey": "b7077943242dd67dab54f6a3d0149175",
+      "name": "Auction Express Inspection",
+      "icon": "https://loadly.io/image/view/app_icons/af01898673ff662c6d340923389d681b/120",
+      "platform": "Android",
+      "version": "1.6.5",
+      "buildVersion": "1",
+      "identifier": "id.logique.auctionexpress",
+      "fileSize": 19586853,
+      "shortcut": "ae-inspection",
+      "installUrl": "https://loadly.io/ae-inspection",
+      "channels": [],
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/677b005cfded1fb27765af88b1e6812d68cfaafe6817373cdd69dbafe0578a4f",
+      "protection": "Public",
+      "isProtected": false,
+      "downloadable": true,
+      "created": "2026-11-06 06:42:48",
+      "updated": "2026-11-06 06:42:48",
+      "account": "default",
+      "builds": [
+        {
+          "buildKey": "b7077943242dd67dab54f6a3d0149175",
+          "version": "1.6.5",
+          "buildVersion": "1",
+          "fileSize": 19586853,
+          "created": "2026-11-06 06:42:48"
+        }
+      ],
+      "groupKey": "id.logique.auctionexpress",
+      "groupLabel": "Auction Express Inspection"
     },
     {
       "appKey": "6f052b7d67a3bd79401ddb9546c61c24",
