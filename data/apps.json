@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09T02:50:15.167Z",
+  "generatedAt": "2026-11-09T10:32:48.930Z",
   "apps": [
     {
       "appKey": "cbfb03b9f6f6df89afd977a68ecce85b",
@@ -510,25 +510,32 @@
     },
     {
       "appKey": "0481c62738f031504f971760c074f0ae",
-      "buildKey": "fb6c218dcfe1bff7682438643f5e0f37",
+      "buildKey": "64a587b818cf26ab6852de8a4e2bb9f5",
       "name": "[STG] Auction Express Inspection",
-      "icon": "https://loadly.io/image/view/app_icons/97041e280ba39992242f58b23811e5ab/120",
+      "icon": "https://loadly.io/image/view/app_icons/b95b7858c22c47985b6a987c42747497/120",
       "platform": "Android",
       "version": "1.6.6",
-      "buildVersion": "5",
+      "buildVersion": "6",
       "identifier": "id.logique.auctionexpress.staging",
-      "fileSize": 19590963,
+      "fileSize": 19742175,
       "shortcut": "ae-inspect-stg",
       "installUrl": "https://loadly.io/ae-inspect-stg",
       "channels": [],
-      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/8c601b4244b51d50cea999106459e3721d7f08dbc0d990cdade4a785ce3a712f",
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/12080ba8e9ff9976fc2e8cf61b5c78ac21e67b84652514a7dd0641a7174f1079",
       "protection": "Public",
       "isProtected": false,
       "downloadable": true,
-      "created": "2026-11-04 04:17:38",
-      "updated": "2026-11-04 04:17:38",
+      "created": "2026-11-09 07:01:42",
+      "updated": "2026-11-09 07:01:42",
       "account": "default",
       "builds": [
+        {
+          "buildKey": "64a587b818cf26ab6852de8a4e2bb9f5",
+          "version": "1.6.6",
+          "buildVersion": "6",
+          "fileSize": 19742175,
+          "created": "2026-11-09 07:01:42"
+        },
         {
           "buildKey": "fb6c218dcfe1bff7682438643f5e0f37",
           "version": "1.6.6",
@@ -1355,52 +1362,38 @@
     },
     {
       "appKey": "168f71265ff50e97ae9ed249293ceb1f",
-      "buildKey": "b7e50eb33319f82bd209dc7c719c24b7",
+      "buildKey": "b531271dd2ec9f2c81da2f4cfb85f5a9",
       "name": "[DEV] JBA Indonesia",
-      "icon": "https://loadly.io/image/view/app_icons/238102701914b1f0e420217788a9bf70/120",
+      "icon": "https://loadly.io/image/view/app_icons/4f3211b09bcd8165d822cc6e5b1c7c86/120",
       "platform": "Android",
-      "version": "3.4.0-dev-",
-      "buildVersion": "24",
+      "version": "3.5.0-dev-",
+      "buildVersion": "25",
       "identifier": "id.logique.jbabiddingrevamp.dev",
-      "fileSize": 118821175,
+      "fileSize": 119634391,
       "shortcut": "jba-bidding-dev",
       "installUrl": "https://loadly.io/jba-bidding-dev",
       "channels": [],
-      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/ecfd0638d448a64e6f765d97764bd89c6f51124f1766e688cde55b7fb0f42a8e",
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/ca4eafcbb49a639d3498c9d54ed3ab985489b443f014c5f82eefc63a9f742121",
       "protection": "Public",
       "isProtected": false,
       "downloadable": true,
-      "created": "2026-11-03 09:44:31",
-      "updated": "2026-11-03 09:44:31",
+      "created": "2026-11-09 08:16:26",
+      "updated": "2026-11-09 08:16:26",
       "account": "default",
       "builds": [
+        {
+          "buildKey": "b531271dd2ec9f2c81da2f4cfb85f5a9",
+          "version": "3.5.0-dev-",
+          "buildVersion": "25",
+          "fileSize": 119634391,
+          "created": "2026-11-09 08:16:26"
+        },
         {
           "buildKey": "b7e50eb33319f82bd209dc7c719c24b7",
           "version": "3.4.0-dev-",
           "buildVersion": "24",
           "fileSize": 118821175,
           "created": "2026-11-03 09:44:31"
-        },
-        {
-          "buildKey": "17c8da750c3ba36279a577b9b8c3c413",
-          "version": "3.4.0-dev-",
-          "buildVersion": "23",
-          "fileSize": 118825455,
-          "created": "2026-10-30 04:29:58"
-        },
-        {
-          "buildKey": "64575b661193c0755c453670bebb9b14",
-          "version": "3.4.0-dev-",
-          "buildVersion": "22",
-          "fileSize": 118816359,
-          "created": "2026-10-28 08:06:57"
-        },
-        {
-          "buildKey": "50b8cf46aa158cf4508342f17547a7fd",
-          "version": "3.3.0-dev-",
-          "buildVersion": "21",
-          "fileSize": 118815072,
-          "created": "2026-10-22 06:40:47"
         }
       ],
       "groupKey": "id.logique.jbabiddingrevamp",
