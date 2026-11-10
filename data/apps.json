@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T03:42:15.662Z",
+  "generatedAt": "2026-11-10T11:57:04.534Z",
   "apps": [
     {
       "appKey": "cbfb03b9f6f6df89afd977a68ecce85b",
@@ -1362,25 +1362,46 @@
     },
     {
       "appKey": "168f71265ff50e97ae9ed249293ceb1f",
-      "buildKey": "b531271dd2ec9f2c81da2f4cfb85f5a9",
+      "buildKey": "05e69dfe9b1165a674228c73d743d5a9",
       "name": "[DEV] JBA Indonesia",
-      "icon": "https://loadly.io/image/view/app_icons/4f3211b09bcd8165d822cc6e5b1c7c86/120",
+      "icon": "https://loadly.io/image/view/app_icons/3b2af45bd15388cd037d91f442310fb4/120",
       "platform": "Android",
       "version": "3.5.0-dev-",
-      "buildVersion": "25",
+      "buildVersion": "28",
       "identifier": "id.logique.jbabiddingrevamp.dev",
-      "fileSize": 119634391,
+      "fileSize": 119595554,
       "shortcut": "jba-bidding-dev",
       "installUrl": "https://loadly.io/jba-bidding-dev",
       "channels": [],
-      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/ca4eafcbb49a639d3498c9d54ed3ab985489b443f014c5f82eefc63a9f742121",
+      "qrCodeUrl": "https://loadly.io/app/qrcodeHistory/fe7a82cb0992a17aa00f760609da53ca782ce7094d60056a05067fa01f0e4ebe",
       "protection": "Public",
       "isProtected": false,
       "downloadable": true,
-      "created": "2026-11-09 08:16:26",
-      "updated": "2026-11-09 08:16:26",
+      "created": "2026-11-10 11:53:28",
+      "updated": "2026-11-10 11:53:28",
       "account": "default",
       "builds": [
+        {
+          "buildKey": "05e69dfe9b1165a674228c73d743d5a9",
+          "version": "3.5.0-dev-",
+          "buildVersion": "28",
+          "fileSize": 119595554,
+          "created": "2026-11-10 11:53:28"
+        },
+        {
+          "buildKey": "c6eaab6619271df2e1b6cc12b7f7d2ce",
+          "version": "3.5.0-dev-",
+          "buildVersion": "27",
+          "fileSize": 119636901,
+          "created": "2026-11-10 11:47:41"
+        },
+        {
+          "buildKey": "51a955153bafd9b598fd839efe0845c1",
+          "version": "3.5.0-dev-",
+          "buildVersion": "26",
+          "fileSize": 119636884,
+          "created": "2026-11-10 08:54:51"
+        },
         {
           "buildKey": "b531271dd2ec9f2c81da2f4cfb85f5a9",
           "version": "3.5.0-dev-",
